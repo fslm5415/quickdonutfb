@@ -1,32 +1,23 @@
-import React from "react";
+import React                        from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Link } from "react-router-dom";
-import './style.css';
-import { logout } from "../../actions/index";
-
-/*
-* @author
-* @function Layout
-**/
+import { NavLink, Link }            from "react-router-dom";
+import { logout }                   from "../../actions/index";
+import                                   './style.css';
 
 const Header = (props) => {
 
     const auth = useSelector(state => state.auth);
     const dispatch = useDispatch();
 
-    // const logout = () => {
-    //     dispatch(logout());
-    // };
-
     return (
         <header className='header'>
             <div style={{ display: 'flex' }}>
-                <div className='logo'>QuickDonut</div>
+                <div className='logo'>成ル早</div>
                 {
                     !auth.authenticated ?
                     <ul className="leftMenu">
-                    <li><NavLink to={'/login'}>Login</NavLink></li>
-                    <li><NavLink to={'/signup'}>Sign up</NavLink></li>
+                    <li><NavLink to={'/login'} replace>ログイン</NavLink></li>
+                    <li><NavLink to={'/signup'} replace>サインアップ</NavLink></li>
                     </ul> : null 
 
                 }
@@ -38,9 +29,9 @@ const Header = (props) => {
                 {
                     auth.authenticated ? 
                     <li>
-                        <Link to={'#'} onClick={ () => {
+                        <Link replace to={'#'} onClick={ () => {
                             dispatch(logout(auth.uid))
-                        } }>Logout</Link>
+                        }}>ログアウト</Link>
                     </li> : null 
                 }
                 

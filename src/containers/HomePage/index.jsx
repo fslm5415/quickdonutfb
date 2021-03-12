@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getRealtimeConversations, getRealtimeUsers, updateMessage } from '../../actions/user.action';
-import Layout from "../../components/Layout/index";
-import './style.css';
+import { useDispatch, useSelector }   from 'react-redux';
+import { 
+    getRealtimeConversations, 
+    getRealtimeUsers, 
+    updateMessage 
+}                                     from '../../actions/user.action';
+import Layout                         from "../../components/Layout/index";
+import                                     './style.css';
 
 const User = (props) => {
 
@@ -11,7 +15,7 @@ const User = (props) => {
     return (
         <div onClick={() => onClick(user)} className="displayName" >
             <div className="displayPic">
-                <img src="https://www.pakutaso.com/shared/img/thumb/susipakuAB678APP91029_TP_V.jpg" alt="" />
+                <img src="https://chojugiga.com/c/chojuori0015/svg_chojuori0015_5.svg" alt="" />
             </div>
             <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between', margin: '0 10px'}}>
                 <span style={{fontWeight: 500}}>{user.firstName} {user.lastName}</span>
@@ -76,8 +80,6 @@ const HomePage = (props) => {
                     setMessage('');
                 });
         }
-
-        // console.log(msgObj);
     };
 
     return (
@@ -108,7 +110,6 @@ const HomePage = (props) => {
                             chatStarted ? 
                             user.conversations.map((con, index) => 
                                 <div key={ index } style={{ textAlign: con.user_uid_1 === auth.uid ? 'right' : 'left' }}>
-                                    {/* <p className="messageStyle" >{ con.message }</p> */}
                                     <p className={ con.user_uid_1 === auth.uid ? 'myMessageStyle' : 'yourMessageStyle' }>{ con.message }</p>
                                 </div> )
                             : null
@@ -132,3 +133,4 @@ const HomePage = (props) => {
 }
 
 export default HomePage;
+

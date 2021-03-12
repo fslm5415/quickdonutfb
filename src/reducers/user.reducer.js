@@ -7,21 +7,21 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
-        case `${userConstants.GET_REALTIME_USERS}_REQUEST`:
+        case userConstants.GET_REALTIME_USERS_REQUEST:
             break;
-        case `${userConstants.GET_REALTIME_USERS}_SUCCESS`:
+        case userConstants.GET_REALTIME_USERS_SUCCESS:
             state = {
                 ...state,
                 users: action.payload.users
             }
             break;
-        case userConstants.GET_REALTIME_MESSAGES:
+        case userConstants.GET_REALTIME_MESSAGES_SUCCESS:
             state = {
                 ...state,
                 conversations: action.payload.conversations
             }
             break;
-        case `${userConstants.GET_REALTIME_MESSAGES}_FAILURE`:
+        case userConstants.GET_REALTIME_MESSAGES_FAILURE:
             state = {
                 ...state,
                 conversations: []

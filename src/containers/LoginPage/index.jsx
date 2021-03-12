@@ -1,15 +1,10 @@
-import React, { useState } from "react";
+import React, { useState }          from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router";
-import { signin } from "../../actions/auth.action";
-import Layout from "../../components/Layout/index";
-import Card from "../../components/UI/Card/index";
-import './style.css';
-
-/*
-* @author
-* @function Layout
-**/
+import { Redirect }                 from "react-router";
+import { signin }                   from "../../actions/auth.action";
+import Layout                       from "../../components/Layout/index";
+import Card                         from "../../components/UI/Card/index";
+import                                   './style.css';
 
 const LoginPage = (props) => {
 
@@ -17,12 +12,6 @@ const LoginPage = (props) => {
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
     const auth = useSelector(state => state.auth);
-
-    // useEffect(() => {
-    //     if (!auth.authenticated) {
-    //         dispatch(isLoggedInUser())
-    //     }
-    // }, []);
 
     const userLogin = (event) => {
         event.preventDefault();
@@ -70,6 +59,6 @@ const LoginPage = (props) => {
             </div>
         </Layout>
     );
-} 
+};
 
 export default LoginPage;

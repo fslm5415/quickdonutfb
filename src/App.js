@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect }         from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { 
   HashRouter as Router,
   Route
-} from "react-router-dom";
-import HomePage from "./containers/HomePage/index";
-import LoginPage from "./containers/LoginPage/index";
-import RegisterPage from "./containers/RegisterPage/index";
-import PrivateRoute from "./components/PrivateRoute";
-import { useDispatch, useSelector } from "react-redux";
-import { isLoggedInUser } from "./actions/index";
-import './App.css';
+}                                   from "react-router-dom";
+import HomePage                     from "./containers/HomePage/index";
+import LoginPage                    from "./containers/LoginPage/index";
+import RegisterPage                 from "./containers/RegisterPage/index";
+import PrivateRoute                 from "./components/PrivateRoute";
+import { isLoggedInUser }           from "./actions/index";
+import                                   './App.css';
 
 function App() {
 
@@ -26,9 +26,9 @@ function App() {
     <div className="App">
       <Router>
         {/* only logged in user can access this home route */}
-        <PrivateRoute path="/" component={ HomePage } exact />
-        <Route path="/login" component={ LoginPage } exact />
-        <Route path="/signup" component={ RegisterPage } exact />
+        <PrivateRoute path="/"       component={ HomePage }     exact />
+        <Route        path="/login"  component={ LoginPage }    exact />
+        <Route        path="/signup" component={ RegisterPage } exact />
       </Router>
     </div>
   );

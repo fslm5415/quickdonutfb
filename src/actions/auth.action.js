@@ -1,11 +1,11 @@
-import firebase from "firebase/app";
-import 'firebase/firestore';
-import 'firebase/auth';
+import firebase           from "firebase/app";
+import                         'firebase/firestore';
+import                         'firebase/auth';
 import { authConstansts } from "./constants";
 
 export const signup = (user) => {
     return async (dispatch) => {
-        dispatch({ type: `${ authConstansts.USER_LOGIM }_REQUEST` });
+        dispatch({ type: authConstansts.USER_LOGIM_REQUEST });
         const db = firebase.firestore();
         try {
             const data = await firebase
@@ -20,28 +20,28 @@ export const signup = (user) => {
                 .doc(data.user.uid)
                 .set({
                     firstName: user.firstName,
-                    lastName: user.lastName,
-                    uid: data.user.uid,
+                    lastName : user.lastName,
+                    uid      : data.user.uid,
                     createdAt: new Date(),
                     // ここにポイント情報を追加できそう！
-                    isOnline: true
+                    isOnline : true
                 });
             const loggedInUser = {
                 firstName: user.firstName,
-                lastName: user.lastName,
-                uid: data.user.uid,
-                email: user.email
+                lastName : user.lastName,
+                uid      : data.user.uid,
+                email    : user.email
             };
             localStorage.setItem('user', JSON.stringify(loggedInUser));
             // ここをアラートにしてみてもいいかも
             console.log('User logged in successfully...!');
             dispatch({
-                type: `${ authConstansts.USER_LOGIM }_SUCCESS`,
+                type   : authConstansts.USER_LOGIM_SUCCESS,
                 payload: { user: loggedInUser } 
             });
         } catch (error) {
             dispatch({
-                type: `${ authConstansts.USER_LOGIM }_FAILURE`,
+                type   : authConstansts.USER_LOGIM_FAILURE,
                 payload: { error } 
             });
         }
@@ -50,7 +50,7 @@ export const signup = (user) => {
 
 export const signin = (user) => {
     return async (dispatch) => {
-        dispatch({ type: `${ authConstansts.USER_LOGIM }_REQUEST` });
+        dispatch({ type: authConstansts.USER_LOGIM_REQUEST });
         const db = firebase.firestore();
         try {
             const data = await firebase
@@ -67,17 +67,17 @@ export const signin = (user) => {
             const loggedInUser = {
                 firstName,
                 lastName,
-                uid: data.user.uid,
+                uid  : data.user.uid,
                 email: data.user.email
             };
             localStorage.setItem('user', JSON.stringify(loggedInUser));
             dispatch({
-                type: `${ authConstansts.USER_LOGIM }_SUCCESS`,
+                type   : authConstansts.USER_LOGIM_SUCCESS,
                 payload: { user: loggedInUser } 
             });
         } catch (error) {
             dispatch({
-                type: `${ authConstansts.USER_LOGIM }_FAILURE`,
+                type   : authConstansts.USER_LOGIM_FAILURE,
                 payload: { error } 
             });
         };
@@ -86,15 +86,16 @@ export const signin = (user) => {
 
 export const isLoggedInUser = () => {
     return async (dispatch) => {
+        dispatch({ type: authConstansts.USER_LOGIM_REQUEST });
         const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
         if(user) {
             dispatch({
-                type: `${ authConstansts.USER_LOGIM }_SUCCESS`,
+                type   : authConstansts.USER_LOGIM_SUCCESS,
                 payload: { user } 
             });
         } else {
             dispatch({
-                type: `${ authConstansts.USER_LOGIM }_FAILURE`,
+                type   : authConstansts.USER_LOGIM_FAILURE,
                 payload: { error: 'Login again please' } 
             });
         }
@@ -103,7 +104,7 @@ export const isLoggedInUser = () => {
 
 export const logout = (uid) => {
     return async (dispatch) => {
-        dispatch({ type: `${authConstansts.USER_LOGOUT}_REQUEST` });
+        dispatch({ type: authConstansts.USER_LOGOUT_REQUEST });
         const db = firebase.firestore();
         try {
             await db.collection('users')
@@ -115,10 +116,10 @@ export const logout = (uid) => {
                 .auth()
                 .signOut();
             localStorage.clear();
-            dispatch({ type: `${authConstansts.USER_LOGOUT}_SUCCESS` });
+            dispatch({ type: authConstansts.USER_LOGOUT_SUCCESS });
         } catch (error) {
             console.log(error);
-            dispatch({ type: `${authConstansts.USER_LOGOUT}_FAILURE`, payload: { error } });
+            dispatch({ type: authConstansts.USER_LOGOUT_FAILURE, payload: { error } });
         }
     };
 };

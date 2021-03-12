@@ -1,10 +1,5 @@
 import React from "react";
-import "./style.css";
-
-/*
-* @author
-* @function Card
-**/
+import            "./style.css";
 
 const Card = (props) => {
     return (

@@ -1,23 +1,23 @@
 import { authConstansts } from "../actions/constants";
 
 const initialState = {
-    firstName: '',
-    lastName: '',
-    email: '',
+    firstName     : '',
+    lastName      : '',
+    email         : '',
     authenticating: false,
-    authenticated: false,
-    error: null
+    authenticated : false,
+    error         : null
 };
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
-        case `${ authConstansts.USER_LOGIM }_REQUEST`:
+        case authConstansts.USER_LOGIM_REQUEST:
             state = {
                 ...state,
                 authenticating: true
             }
             break;
-        case `${ authConstansts.USER_LOGIM }_SUCCESS`:
+        case authConstansts.USER_LOGIM_SUCCESS:
             state = {
                 ...state,
                 ...action.payload.user,
@@ -25,7 +25,7 @@ const authReducer = (state = initialState, action) => {
                 authenticating: false
             }
             break;
-        case `${ authConstansts.USER_LOGIM }_FAILURE`:
+        case authConstansts.USER_LOGIM_FAILURE:
             state = {
                 ...state,
                 authenticated: false,
@@ -33,14 +33,14 @@ const authReducer = (state = initialState, action) => {
                 error: action.payload.error,
             }
             break;
-        case `${ authConstansts.USER_LOGOUT }_REQUEST`:
+        case authConstansts.USER_LOGOUT_REQUEST:
             break;
-        case `${ authConstansts.USER_LOGOUT }_SUCCESS`:
+        case authConstansts.USER_LOGOUT_SUCCESS:
             state = {
                 ...initialState,
             }
             break;
-        case `${ authConstansts.USER_LOGOUT }_FAILURE`:
+        case authConstansts.USER_LOGOUT_FAILURE:
             state = {
                 ...state,
                 error: action.payload.error

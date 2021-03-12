@@ -1,15 +1,10 @@
-import React, { useState } from "react";
-import Layout from "../../components/Layout/index";
-import Card from "../../components/UI/Card/index";
-import { signup } from "../../actions/index";
+import React, { useState }          from "react";
 import { useDispatch, useSelector } from "react-redux";
-import './style.css';
-import { Redirect } from "react-router-dom";
-
-/*
-* @author
-* @function Layout
-**/
+import { Redirect }                 from "react-router-dom";
+import Layout                       from "../../components/Layout/index";
+import Card                         from "../../components/UI/Card/index";
+import { signup }                   from "../../actions/index";
+import                                   './style.css';
 
 const RegisterPage = (props) => {
 
@@ -31,7 +26,7 @@ const RegisterPage = (props) => {
         };
 
         dispatch(signup(user));
-    }
+    };
 
     if(auth.authenticated){
         return <Redirect to={'/'} />
@@ -79,6 +74,6 @@ const RegisterPage = (props) => {
             </div>
         </Layout>
     );
-} 
+};
 
 export default RegisterPage;
