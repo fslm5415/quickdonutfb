@@ -93,6 +93,12 @@
     top: 40px;
 }
 
+.timestampData {
+    color: cadetblue;
+    font-size: 12px;
+    padding: 0 10px;
+}
+
 .onlineStatus{
     display: inline-block;
     width: 10px;

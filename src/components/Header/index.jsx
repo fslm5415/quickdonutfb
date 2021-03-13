@@ -7,6 +7,7 @@ import                                   './style.css';
 const Header = (props) => {
 
     const auth = useSelector(state => state.auth);
+    const user = useSelector(state => state.user);
     const dispatch = useDispatch();
 
     return (
@@ -23,7 +24,8 @@ const Header = (props) => {
                 }
             </div>
             <div style={{ margin: '20px 0', color: '#fff', fontWeight: 'bold' }}>
-                { auth.authenticated ? `Hi!   ${auth.firstName} ${auth.lastName}` : '' }
+                { auth.authenticated ? `Hi!   ${auth.firstName} ${auth.lastName}  ` : '' }
+                { user.MyDonutPoit === null ? 'LetsTalk!' : `DP : ${user.MyDonutPoit}` }
             </div>
             <ul className="menu">
                 {

@@ -3,7 +3,8 @@ import { useDispatch, useSelector }   from 'react-redux';
 import { 
     getRealtimeConversations, 
     getRealtimeUsers, 
-    updateMessage 
+    updateMessage,
+    successDonutMessage
 }                                     from '../../actions/user.action';
 import Layout                         from "../../components/Layout/index";
 import                                     './style.css';
@@ -37,6 +38,11 @@ const HomePage = (props) => {
     const [userUid, setUserUid] = useState(null);
     const [unsubscribe, setUnsubscribe] = useState(null);
 
+    // ↓
+    const [donut, setDonut] = useState(false);
+    
+    // ↑
+
     useEffect(() => {
         const _ununsubscribe = dispatch(getRealtimeUsers(auth.uid))
             .then(unsubscribe => {
@@ -68,10 +74,21 @@ const HomePage = (props) => {
 
     const submitMessage = (event) => {
         console.log('コード内の使用のためのコンソール : ', unsubscribe);
+        const date = new Date();
+        const str = date.getFullYear()
+            + '/' + ('0' + (date.getMonth() + 1)).slice(-2)
+            + '/' + ('0' + date.getDate()).slice(-2)
+            + ' ' + ('0' + date.getHours()).slice(-2)
+            + ':' + ('0' + date.getMinutes()).slice(-2);
+        console.log(str); 
+        
         const msgObj = {
             user_uid_1: auth.uid,
             user_uid_2: userUid,
-            message
+            createdAt: str,
+            timestampData: date.getTime(),
+            message,
+            donut
         }
 
         if (message !== '' ) {
@@ -80,6 +97,25 @@ const HomePage = (props) => {
                     setMessage('');
                 });
         }
+        // ↓
+        const diff = date.getTime() - user.LASTtimestampData;
+        const inHour = Math.abs(diff) / (60*60*1000);
+        console.log('@@@@@@@@@@inHour? : ', inHour);
+        const isSameLastSubmitUser = user.LASTsubmitUserId === auth.uid;
+        console.log('@@@@@@@@@isSameLastSubmitUser? : ', isSameLastSubmitUser);
+        if (user.LASTdonut && inHour <= 1 && !isSameLastSubmitUser) {
+            dispatch(successDonutMessage(auth.uid));
+            alert('ドーナツ獲得！');
+        }
+        // ↑
+        setDonut(false);
+
+        
+    };
+
+    const toggleDonut = () => {
+        setDonut(!donut);
+        console.log(donut);
     };
 
     return (
@@ -100,17 +136,33 @@ const HomePage = (props) => {
                     }                       
                 </div>
                 <div className="chatArea">
-                    <div className="chatHeader">
+                    <div className="chatHeader" onClick={() => {
+                        // ↓
+                        console.log('LASTtimestampData in HomePage? : ', user.LASTtimestampData);
+                        console.log('LASTdonut in HomePage? : ', user.LASTdonut);   
+                        // ↑
+                    }}>
                         {
-                            chatStarted ? chatUser : ''
+                            chatStarted ? `${chatUser} DP : ${user.YourDonutPoit}` : ''
                         }
                     </div>
                     <div className="messageSections">
                         {
                             chatStarted ? 
                             user.conversations.map((con, index) => 
-                                <div key={ index } style={{ textAlign: con.user_uid_1 === auth.uid ? 'right' : 'left' }}>
-                                    <p className={ con.user_uid_1 === auth.uid ? 'myMessageStyle' : 'yourMessageStyle' }>{ con.message }</p>
+                                <div 
+                                    key={ index } 
+                                    style={{ textAlign: con.user_uid_1 === auth.uid ? 'right' : 'left' }}
+                                >
+                                    <p 
+                                        className={ con.user_uid_1 === auth.uid ? 'myMessageStyle' : 'yourMessageStyle' }
+                                        style={{ backgroundColor: con.donut ? 'pink' : null }}
+                                    >{ con.message }</p>
+                                    <p className='timestampData'>{ con.createdAt }</p>
+                                    {/* { console.log('==========================') }
+                                    { console.log('message?', con.message) }
+                                    { console.log('timestampData?', con.timestampData) }
+                                    { console.log('==========================') } */}
                                 </div> )
                             : null
                         }
@@ -124,6 +176,10 @@ const HomePage = (props) => {
                                 placeholder="Write Message"
                             />
                             <button onClick={submitMessage}>Send</button>
+                            <button 
+                                onClick={toggleDonut}
+                                style={{ backgroundColor: donut ? 'pink' : '' }}
+                            >Donut</button>
                         </div> : null
                     }
                 </div>

@@ -8,6 +8,7 @@ export const getRealtimeUsers = (uid) => {
     return async (dispatch) => {
         dispatch({ type: userConstants.GET_REALTIME_USERS_REQUEST });
         const db = firebase.firestore();
+
         const unsubscribe = await db.collection("users")
             .onSnapshot((querySnapshot) => {
                 const users = [];
@@ -33,8 +34,7 @@ export const updateMessage = (msgObj) => {
                 .collection('conversations')
                 .add({
                     ...msgObj,
-                    isView   : false,
-                    createdAt: new Date()
+                    isView   : false
                 });
             dispatch({
                 type: userConstants.GET_REALTIME_MESSAGES_SUCCESS,
@@ -45,12 +45,67 @@ export const updateMessage = (msgObj) => {
     };
 };
 
+// ↓
+// 引数にメッセージを送った本人のユーザーIDを持ってくる（uid）(実装済み)
+export const successDonutMessage = (uid) => {
+    return async (dispatch) => {
+        const db = firebase.firestore();
+        let nextDonutPoit = 0;
+        // console.log('nextDonutPoit11111? : ', nextDonutPoit);
+        try {
+            const data = await db.collection('users')
+                .doc(uid);
+            nextDonutPoit = await data
+                .get()
+                .then((doc) => {
+                    return doc.data().donutPoint;
+                });
+            // console.log('nextDonutPoit222222? : ', nextDonutPoit);
+            await db.collection('users')
+                .doc(uid)
+                .update({
+                    donutPoint: nextDonutPoit + 1
+                });
+            dispatch({
+                type: userConstants.SUBMIT_DONUT_SUCCESS
+            });
+        } catch (error) {
+            
+        } 
+    };
+};
+// ↑
+
 export const getRealtimeConversations = (user) => {
     return async (dispatch) => {
         const db = firebase.firestore();
+
+        let LASTtimestampData = 0;
+        let LASTdonut = false;
+
+        let LASTsubmitUserId = '';
+
+        // ↓
+        const MyUserData = await db.collection('users')
+                .doc(user.uid_1);
+        const MyDonutPoit = await MyUserData
+            .get()
+            .then((doc) => {
+                return doc.data().donutPoint;
+            }); 
+
+        const YourUserData = await db.collection('users')
+        .doc(user.uid_2);
+        const YourDonutPoit = await YourUserData
+            .get()
+            .then((doc) => {
+                return doc.data().donutPoint;
+            }); 
+        // ↑
+
         const unsubscribe = db.collection('conversations')
             .where('user_uid_1', 'in', [user.uid_1, user.uid_2])
-            .orderBy('createdAt', 'asc')
+            .orderBy('timestampData', 'asc')
             .onSnapshot((querySnapshot) => {
                 const conversations = [];
                 querySnapshot.forEach((doc) => {
@@ -60,11 +115,24 @@ export const getRealtimeConversations = (user) => {
                         (doc.data().user_uid_1 === user.uid_2 && doc.data().user_uid_2 === user.uid_1)
                     ) {
                         conversations.push(doc.data());
+                        
+                        if (doc.data().timestampData > LASTtimestampData) {
+                            LASTtimestampData = doc.data().timestampData;
+                            LASTdonut = doc.data().donut;
+                            LASTsubmitUserId = doc.data().user_uid_1;
+                        }
+                        // console.log('message? : ', doc.data().message);
+                        // console.log('donut? : ', doc.data().donut);
+                        // console.log('timestampData? : ', doc.data().timestampData);
+                        // console.log('LASTtimestampData? : ', LASTtimestampData);
+                        // console.log('LASTdonut? : ', LASTdonut);
+                        // console.log('LASTsubmitUserId? : ', LASTsubmitUserId);
+                        // console.log('===============================');
                     }
                     if(conversations.length > 0) {
                         dispatch({
                             type   : userConstants.GET_REALTIME_MESSAGES_SUCCESS,
-                            payload: {conversations}
+                            payload: {conversations, LASTtimestampData, LASTdonut, MyDonutPoit, YourDonutPoit, LASTsubmitUserId}
                         });
                     } else {
                         dispatch({

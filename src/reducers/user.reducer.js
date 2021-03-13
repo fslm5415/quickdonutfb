@@ -2,7 +2,12 @@ import { userConstants } from "../actions/constants";
 
 const initialState = {
     users: [],
-    conversations: []
+    conversations: [],
+    MyDonutPoit: null,
+    YourDonutPoit: null,
+    LASTtimestampData: null,
+    LASTdonut: null,
+    LASTsubmitUserId: null
 }
 
 const userReducer = (state = initialState, action) => {
@@ -12,13 +17,18 @@ const userReducer = (state = initialState, action) => {
         case userConstants.GET_REALTIME_USERS_SUCCESS:
             state = {
                 ...state,
-                users: action.payload.users
+                users: action.payload.users,
             }
             break;
         case userConstants.GET_REALTIME_MESSAGES_SUCCESS:
             state = {
                 ...state,
-                conversations: action.payload.conversations
+                conversations: action.payload.conversations,
+                MyDonutPoit: action.payload.MyDonutPoit,
+                YourDonutPoit: action.payload.YourDonutPoit,
+                LASTtimestampData: action.payload.LASTtimestampData,
+                LASTdonut: action.payload.LASTdonut,
+                LASTsubmitUserId: action.payload.LASTsubmitUserId
             }
             break;
         case userConstants.GET_REALTIME_MESSAGES_FAILURE:
@@ -26,6 +36,8 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 conversations: []
             }
+            break;
+        case userConstants.SUBMIT_DONUT_SUCCESS:
             break;
         default:
             return state;

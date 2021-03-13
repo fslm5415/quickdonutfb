@@ -23,7 +23,8 @@ export const signup = (user) => {
                     lastName : user.lastName,
                     uid      : data.user.uid,
                     createdAt: new Date(),
-                    // ここにポイント情報を追加できそう！
+                    // ここにポイント情報を追加できそう！(済み)
+                    donutPoint: 0,
                     isOnline : true
                 });
             const loggedInUser = {
@@ -61,6 +62,7 @@ export const signin = (user) => {
                 .update({
                     isOnline: true
                 });
+
             const name = data.user.displayName.split(" ");
             const firstName = name[0];
             const lastName = name[1];
