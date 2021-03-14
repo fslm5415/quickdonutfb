@@ -11,6 +11,8 @@ import PrivateRoute                 from "./components/PrivateRoute";
 import { isLoggedInUser }           from "./actions/index";
 import                                   './App.css';
 
+import UserInfoPage from "./containers/UserInfoPage/index";
+
 function App() {
 
   const auth = useSelector(state => state.auth);
@@ -26,9 +28,10 @@ function App() {
     <div className="App">
       <Router>
         {/* only logged in user can access this home route */}
-        <PrivateRoute path="/"       component={ HomePage }     exact />
-        <Route        path="/login"  component={ LoginPage }    exact />
-        <Route        path="/signup" component={ RegisterPage } exact />
+        <PrivateRoute path="/"         component={ HomePage }     exact />
+        <PrivateRoute path="/userInfo" component={ UserInfoPage } exact />
+        <Route        path="/login"    component={ LoginPage }    exact />
+        <Route        path="/signup"   component={ RegisterPage } exact />
       </Router>
     </div>
   );

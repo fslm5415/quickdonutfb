@@ -1,0 +1,146 @@
+.container{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 60px);
+    overflow: hidden;
+}
+.listOfUsers{
+    width: 30%;
+    height: 100%;
+    overflow-x: hidden;
+    border-right: 1px solid #ccc;
+}
+.userInfoArea{
+    width: 70%;
+    height: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+.userInfoHeader{
+    position: fixed;
+    width: 70%;
+    height: 40px;
+    background: #e2e0e0;
+    text-align: center;
+    line-height: 40px;
+    color: #000;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.userIDinput {
+    width: 70%;
+    margin-right: 10px;
+}
+
+.chatControls{
+    display: flex;
+    position: fixed;
+    width: 70%;
+    height: 50px;
+    bottom: 0;
+}
+.chatControls textarea{
+    width: 90%;
+}
+.chatControls button{
+    width: 10%;
+}
+
+.displayHeader {
+    background: cadetblue;
+    color: white;
+    font-weight: bold;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    box-sizing: border-box;
+}
+
+.displayHeader.start {
+    background: tomato;
+}
+
+.displayName{
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.displayName.active{
+    background: #ccc;
+}
+
+.displayName .displayPic{
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+.displayName .displayPic img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.myMessageStyle{
+    background-color: rgb(101, 198, 236);
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: 5px;
+    display: inline-block;
+}
+
+.yourMessageStyle{
+    background-color: #ccc;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: 5px;
+    display: inline-block;
+}
+
+.userInfoSections{
+    height: calc(100% - 90px);
+    width: 100%;
+    overflow-x: hidden;
+    text-align: center;
+    top: 40px;
+}
+
+.userInfoSections div {
+    margin-bottom: 20px;
+}
+
+.userInfoPic img {
+    text-align: center;
+    border-radius: 25px;
+    width: 100px;
+    height: 100px;
+    margin-top: 100px;
+}
+
+.timestampData {
+    color: cadetblue;
+    font-size: 12px;
+    padding: 0 10px;
+}
+
+.onlineStatus{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #16e316;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 #16e316;
+}
+.onlineStatus.off{
+    background: green;
+    box-shadow: 0 0 0 0;
+}

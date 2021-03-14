@@ -16,7 +16,7 @@ const User = (props) => {
     return (
         <div onClick={() => onClick(user)} className="displayName" >
             <div className="displayPic">
-                <img src="https://chojugiga.com/c/chojuori0015/svg_chojuori0015_5.svg" alt="" />
+                <img src="http://flat-icon-design.com/f/f_object_174/s512_f_object_174_1bg.png" alt="" />
             </div>
             <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between', margin: '0 10px'}}>
                 <span style={{fontWeight: 500}}>{user.firstName} {user.lastName}</span>

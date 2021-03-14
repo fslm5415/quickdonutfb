@@ -13,7 +13,9 @@ const Header = (props) => {
     return (
         <header className='header'>
             <div style={{ display: 'flex' }}>
-                <div className='logo'>QuickDonut</div>
+                <div className='logo'>
+                    <Link replace to={'/'} style={{ color: "white" }}>QuickDonut</Link>
+                </div>
                 {
                     !auth.authenticated ?
                     <ul className="leftMenu">
@@ -28,17 +30,19 @@ const Header = (props) => {
                     ( user.MyDonutPoit === null ? 'LetsTalk!' : `DP : ${user.MyDonutPoit}` )
                 : '' }
             </div>
-            <ul className="menu">
                 {
                     auth.authenticated ? 
-                    <li>
-                        <Link replace to={'#'} onClick={ () => {
-                            dispatch(logout(auth.uid))
-                        }}>logout</Link>
-                    </li> : null 
+                    <ul className="menu">
+                        <li style={{ marginRight: 20 }}>
+                            <Link replace to={'/userInfo'} >Relationship </Link>
+                        </li>
+                        <li>
+                            <Link replace to={'#'} onClick={ () => {
+                                dispatch(logout(auth.uid))
+                            }}>logout</Link>
+                        </li>
+                    </ul> : null 
                 }
-                
-            </ul>
         </header>
     );
 } 
