@@ -13,19 +13,20 @@ const Header = (props) => {
     return (
         <header className='header'>
             <div style={{ display: 'flex' }}>
-                <div className='logo'>成ル早</div>
+                <div className='logo'>QuickDonut</div>
                 {
                     !auth.authenticated ?
                     <ul className="leftMenu">
-                    <li><NavLink to={'/login'} replace>ログイン</NavLink></li>
-                    <li><NavLink to={'/signup'} replace>サインアップ</NavLink></li>
+                    <li><NavLink to={'/login'} replace>login</NavLink></li>
+                    <li><NavLink to={'/signup'} replace>signup</NavLink></li>
                     </ul> : null 
 
                 }
             </div>
             <div style={{ margin: '20px 0', color: '#fff', fontWeight: 'bold' }}>
-                { auth.authenticated ? `Hi!   ${auth.firstName} ${auth.lastName}  ` : '' }
-                { user.MyDonutPoit === null ? 'LetsTalk!' : `DP : ${user.MyDonutPoit}` }
+                { auth.authenticated ? `Hi!   ${auth.firstName} ${auth.lastName}  ` + 
+                    ( user.MyDonutPoit === null ? 'LetsTalk!' : `DP : ${user.MyDonutPoit}` )
+                : '' }
             </div>
             <ul className="menu">
                 {
@@ -33,7 +34,7 @@ const Header = (props) => {
                     <li>
                         <Link replace to={'#'} onClick={ () => {
                             dispatch(logout(auth.uid))
-                        }}>ログアウト</Link>
+                        }}>logout</Link>
                     </li> : null 
                 }
                 

@@ -45,13 +45,10 @@ export const updateMessage = (msgObj) => {
     };
 };
 
-// ↓
-// 引数にメッセージを送った本人のユーザーIDを持ってくる（uid）(実装済み)
 export const successDonutMessage = (uid) => {
     return async (dispatch) => {
         const db = firebase.firestore();
         let nextDonutPoit = 0;
-        // console.log('nextDonutPoit11111? : ', nextDonutPoit);
         try {
             const data = await db.collection('users')
                 .doc(uid);
@@ -60,7 +57,6 @@ export const successDonutMessage = (uid) => {
                 .then((doc) => {
                     return doc.data().donutPoint;
                 });
-            // console.log('nextDonutPoit222222? : ', nextDonutPoit);
             await db.collection('users')
                 .doc(uid)
                 .update({
@@ -70,38 +66,31 @@ export const successDonutMessage = (uid) => {
                 type: userConstants.SUBMIT_DONUT_SUCCESS
             });
         } catch (error) {
-            
+            console.log(error);
         } 
     };
 };
-// ↑
 
 export const getRealtimeConversations = (user) => {
     return async (dispatch) => {
         const db = firebase.firestore();
-
         let LASTtimestampData = 0;
         let LASTdonut = false;
-
         let LASTsubmitUserId = '';
-
-        // ↓
         const MyUserData = await db.collection('users')
-                .doc(user.uid_1);
+            .doc(user.uid_1);
         const MyDonutPoit = await MyUserData
             .get()
             .then((doc) => {
                 return doc.data().donutPoint;
             }); 
-
         const YourUserData = await db.collection('users')
-        .doc(user.uid_2);
+            .doc(user.uid_2);
         const YourDonutPoit = await YourUserData
             .get()
             .then((doc) => {
                 return doc.data().donutPoint;
             }); 
-        // ↑
 
         const unsubscribe = db.collection('conversations')
             .where('user_uid_1', 'in', [user.uid_1, user.uid_2])
@@ -115,7 +104,6 @@ export const getRealtimeConversations = (user) => {
                         (doc.data().user_uid_1 === user.uid_2 && doc.data().user_uid_2 === user.uid_1)
                     ) {
                         conversations.push(doc.data());
-                        
                         if (doc.data().timestampData > LASTtimestampData) {
                             LASTtimestampData = doc.data().timestampData;
                             LASTdonut = doc.data().donut;

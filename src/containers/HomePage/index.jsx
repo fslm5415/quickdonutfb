@@ -37,11 +37,7 @@ const HomePage = (props) => {
     // これは相手のuidかも？！
     const [userUid, setUserUid] = useState(null);
     const [unsubscribe, setUnsubscribe] = useState(null);
-
-    // ↓
     const [donut, setDonut] = useState(false);
-    
-    // ↑
 
     useEffect(() => {
         const _ununsubscribe = dispatch(getRealtimeUsers(auth.uid))
@@ -73,7 +69,6 @@ const HomePage = (props) => {
     };
 
     const submitMessage = (event) => {
-        console.log('コード内の使用のためのコンソール : ', unsubscribe);
         const date = new Date();
         const str = date.getFullYear()
             + '/' + ('0' + (date.getMonth() + 1)).slice(-2)
@@ -97,25 +92,25 @@ const HomePage = (props) => {
                     setMessage('');
                 });
         }
-        // ↓
+
         const diff = date.getTime() - user.LASTtimestampData;
         const inHour = Math.abs(diff) / (60*60*1000);
-        console.log('@@@@@@@@@@inHour? : ', inHour);
         const isSameLastSubmitUser = user.LASTsubmitUserId === auth.uid;
-        console.log('@@@@@@@@@isSameLastSubmitUser? : ', isSameLastSubmitUser);
         if (user.LASTdonut && inHour <= 1 && !isSameLastSubmitUser) {
             dispatch(successDonutMessage(auth.uid));
-            alert('ドーナツ獲得！');
+            alert('早い返信をありがとう！');
         }
-        // ↑
         setDonut(false);
-
-        
     };
 
     const toggleDonut = () => {
         setDonut(!donut);
         console.log(donut);
+    };
+
+    if (false) {
+        // コード内の使用のため
+        console.log(unsubscribe);
     };
 
     return (
@@ -137,10 +132,6 @@ const HomePage = (props) => {
                 </div>
                 <div className="chatArea">
                     <div className="chatHeader" onClick={() => {
-                        // ↓
-                        console.log('LASTtimestampData in HomePage? : ', user.LASTtimestampData);
-                        console.log('LASTdonut in HomePage? : ', user.LASTdonut);   
-                        // ↑
                     }}>
                         {
                             chatStarted ? `${chatUser} DP : ${user.YourDonutPoit}` : ''
@@ -159,10 +150,6 @@ const HomePage = (props) => {
                                         style={{ backgroundColor: con.donut ? 'pink' : null }}
                                     >{ con.message }</p>
                                     <p className='timestampData'>{ con.createdAt }</p>
-                                    {/* { console.log('==========================') }
-                                    { console.log('message?', con.message) }
-                                    { console.log('timestampData?', con.timestampData) }
-                                    { console.log('==========================') } */}
                                 </div> )
                             : null
                         }
@@ -186,7 +173,7 @@ const HomePage = (props) => {
             </section>
         </Layout>
     );
-}
+};
 
 export default HomePage;
 
