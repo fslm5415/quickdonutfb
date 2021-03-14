@@ -80,7 +80,7 @@ const UserInfoPage = (props) => {
                                 </div>
                                 <div className="userInfoName">{ `${relation.firstName} ${relation.lastName}` }</div>
                                 <div className="userInfoDonuts">DP : { relation.donutPoint }</div>
-                                <div className="userInfoCreatedAt">{ relation.createdAt }</div>
+                                <div className="userInfoCreatedAt">アカウント作成日 : { relation.createdAt }</div>
                                 <div className="userInfoTouch">
                                     <button>Touch!</button>
                                 </div>

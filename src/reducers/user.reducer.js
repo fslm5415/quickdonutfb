@@ -37,6 +37,8 @@ const userReducer = (state = initialState, action) => {
                 conversations: []
             }
             break;
+        case userConstants.UPDATE_MESSAGES_SUCCESS:
+            break;
         case userConstants.SUBMIT_DONUT_SUCCESS:
             break;
         default:

@@ -37,7 +37,7 @@ export const updateMessage = (msgObj) => {
                     isView   : false
                 });
             dispatch({
-                type: userConstants.GET_REALTIME_MESSAGES_SUCCESS,
+                type: userConstants.UPDATE_MESSAGES_SUCCESS,
             });
         } catch (error) {
             console.log(error);

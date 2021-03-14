@@ -18,7 +18,7 @@ export const getUserInfomation = (uid) => {
                     firstName = doc.data().firstName;
                     lastName = doc.data().lastName;
                     donutPoint = doc.data().donutPoint;
-                    // createdAtはちゃんと時間データをuserに入れてから
+                    createdAt = doc.data().createdAt;
                 });
             const getUserInfo = {
                 firstName,
