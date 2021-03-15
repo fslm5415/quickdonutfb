@@ -9,7 +9,7 @@
     width: 30%;
     height: 100%;
     overflow-x: hidden;
-    border-right: 1px solid #ccc;
+    border-right: 1px solid #d8e8e8;
 }
 .chatArea{
     width: 70%;
@@ -21,10 +21,10 @@
     position: fixed;
     width: 70%;
     height: 40px;
-    background: #e2e0e0;
+    background: #a8d0da;
     text-align: center;
     line-height: 40px;
-    color: #000;
+    color: #2f3a56;
     font-weight: bold;
     font-family: sans-serif;
 }
@@ -37,9 +37,23 @@
 }
 .chatControls textarea{
     width: 90%;
+    outline: none;
+    color: #2f3a56;
 }
-.chatControls button{
+.chatControlsButton{
     width: 10%;
+    font-weight: 800;
+    color: #2f3a56;
+    font-size: 12px;
+    letter-spacing: 1px;
+    outline: none;
+    border: 1px solid #2f3a56;
+    background-color: #a8d0da;
+}
+
+.chatControlsButton :hover{
+    color: #a8d0da;
+    background-color: #2f3a56;
 }
 
 .displayName{
@@ -51,7 +65,7 @@
 }
 
 .displayName.active{
-    background: #ccc;
+    background: #d8e8e8;
 }
 
 .displayName .displayPic{
@@ -68,7 +82,7 @@
 }
 
 .myMessageStyle{
-    background-color: rgb(101, 198, 236);
+    background-color: #406d96;
     display: inline-block;
     padding: 5px 10px;
     border-radius: 10px;
@@ -77,7 +91,7 @@
 }
 
 .yourMessageStyle{
-    background-color: #ccc;
+    background-color: #d8e8e8;
     display: inline-block;
     padding: 5px 10px;
     border-radius: 10px;
@@ -94,7 +108,7 @@
 }
 
 .timestampData {
-    color: cadetblue;
+    color: #a8d0da;
     font-size: 12px;
     padding: 0 10px;
 }
@@ -103,11 +117,11 @@
     display: inline-block;
     width: 10px;
     height: 10px;
-    background: #16e316;
+    background: #45daff;
     border-radius: 5px;
-    box-shadow: 0 0 10px 0 #16e316;
+    box-shadow: 0 0 10px 0 #45daff;
 }
 .onlineStatus.off{
-    background: green;
+    background: #a8d0da;
     box-shadow: 0 0 0 0;
 }

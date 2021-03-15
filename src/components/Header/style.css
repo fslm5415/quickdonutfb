@@ -3,14 +3,14 @@
     position: relative;
     height: 60px;
     display: flex;
-    background: #1b5ff9;
+    background: #2f3a56;
     justify-content: space-between;
     box-sizing: border-box;
 }
 
 .logo{
     font-size: 23px;
-    color: #fff;
+    color: #d8e8e8;
     text-transform: capitalize;
     font-weight: bold;
     margin: 18px;
@@ -23,7 +23,7 @@
 }
 
 .menu > li > a{
-    color: #fff;
+    color: #d8e8e8;
     font-weight: bold;
     text-shadow: 0 0;
     text-decoration: none;
@@ -31,7 +31,7 @@
 
 .leftMenu{
     display: flex; 
-    color: #fff; 
+    color: #d8e8e8; 
     margin: 20px;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .leftMenu > li > a{
-    color: #fff;
+    color: #d8e8e8;
 }
 
 .leftMenu > li > a.active{

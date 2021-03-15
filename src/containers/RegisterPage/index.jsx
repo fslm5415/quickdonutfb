@@ -35,8 +35,9 @@ const RegisterPage = (props) => {
             <div className="registerContainer">
                 <Card>
                     <form onSubmit={ registerUser }>
-                        <h3>Sign up</h3>
+                        <h3 className="registerTitle">Sign up</h3>
                         <input
+                            className="registerInput"
                             name="firstName"
                             type="text"
                             value={ firstName } 
@@ -44,6 +45,7 @@ const RegisterPage = (props) => {
                             placeholder="First Name"
                         />
                         <input
+                            className="registerInput"
                             name="lastName"
                             type="text"
                             value={ lastName } 
@@ -51,6 +53,7 @@ const RegisterPage = (props) => {
                             placeholder="Last Name"
                         />
                         <input
+                            className="registerInput"
                             name="email"
                             type="text"
                             value={ email } 
@@ -58,6 +61,7 @@ const RegisterPage = (props) => {
                             placeholder="Email"
                         />
                         <input
+                            className="registerInput"
                             name="password"
                             type="password"
                             value={ password } 
@@ -65,7 +69,7 @@ const RegisterPage = (props) => {
                             placeholder="Password"
                         />
                         <div>
-                            <button>Sign up</button>
+                            <button className="registerButton">Sign up</button>
                         </div>
                     </form>
                 </Card>

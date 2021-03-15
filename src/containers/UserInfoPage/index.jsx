@@ -53,7 +53,7 @@ const SwitchSection = (props) => {
         return null;
     } else if (relation.isAccepted === null && relation.isGetStartRelation === null) {
         return (
-            <button onClick={() => sendRelationshipReq()}>リクエストを送る！</button>
+            <button className="userInfoTouch" onClick={() => sendRelationshipReq()}>リクエストを送る！</button>
         );
     } else if (relation.isAccepted === false && relation.isGetStartRelation === null) {
         return (
@@ -61,7 +61,7 @@ const SwitchSection = (props) => {
         );
     } else if (relation.isAccepted === null && relation.isGetStartRelation === false) {
         return (
-            <button onClick={() => acceptRelationshipReq()}>リクエストを承認する！</button>
+            <button className="userInfoTouch" onClick={() => acceptRelationshipReq()}>リクエストを承認する！</button>
         );
     } else if (relation.isAccepted === true || relation.isGetStartRelation === true) {
         return (
@@ -137,8 +137,7 @@ const UserInfoPage = (props) => {
                 <div className="listOfUsers">
                     <div 
                         onClick={() => setUserID(auth.uid)} 
-                        className="displayName" 
-                        style={{ backgroundColor: 'purple', color: 'white' }} 
+                        className="displayName My"  
                     >
                         <div className="displayPic">
                             <img src="http://flat-icon-design.com/f/f_object_174/s512_f_object_174_1bg.png" alt="" />
@@ -193,7 +192,7 @@ const UserInfoPage = (props) => {
                                 placeholder="UserID"
                                 className="userIDinput"
                             />
-                            <button>Search</button>
+                            <button className="userInfoButton">Search</button>
                         </form>
                     </div>
                         { 
@@ -203,9 +202,9 @@ const UserInfoPage = (props) => {
                                     <img src="http://flat-icon-design.com/f/f_object_174/s512_f_object_174_1bg.png" alt="" />
                                 </div>
                                 <div className="userInfoName">{ `${relation.firstName} ${relation.lastName}` }</div>
-                                <div className="userInfoDonuts">DP : { relation.donutPoint }</div>
+                                <div className="userInfoDonuts">DonutPoint : { relation.donutPoint }</div>
                                 <div className="userInfoCreatedAt">アカウント作成日 : { relation.createdAt }</div>
-                                <div className="userInfoTouch">
+                                <div>
                                     <SwitchSection 
                                         relation={ relation } 
                                         sendRelationshipReq={ sendRelationshipReq } 
@@ -217,7 +216,7 @@ const UserInfoPage = (props) => {
                         {
                             relation.error !== null ?
                             <div className="userInfoSections">
-                                <p style={{ marginTop: 200 }}>{ relation.error }</p>
+                                <p className="errorMessage">{ relation.error }</p>
                             </div> : null
                         }
                 </div>

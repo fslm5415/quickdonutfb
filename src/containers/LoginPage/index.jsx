@@ -36,8 +36,9 @@ const LoginPage = () => {
             <div className="loginContainer">
                 <Card>
                     <form onSubmit={userLogin}>
-                        <h3>Login</h3>
+                        <h3 className="loginTitle">Login</h3>
                         <input
+                            className="loginInput"
                             name="email"
                             type="text"
                             value={ email } 
@@ -45,6 +46,7 @@ const LoginPage = () => {
                             placeholder="Email"
                         />
                         <input
+                            className="loginInput"
                             name="password"
                             type="password"
                             value={ password } 
@@ -52,7 +54,7 @@ const LoginPage = () => {
                             placeholder="Password"
                         />
                         <div>
-                            <button>Login</button>
+                            <button className="loginButton">Login</button>
                         </div>
                     </form>
                 </Card>

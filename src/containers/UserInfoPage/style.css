@@ -21,7 +21,7 @@
     position: fixed;
     width: 70%;
     height: 40px;
-    background: #e2e0e0;
+    background: #a8d0da;
     text-align: center;
     line-height: 40px;
     color: #000;
@@ -32,6 +32,16 @@
 .userIDinput {
     width: 70%;
     margin-right: 10px;
+    border: 1px solid #2f3a56;
+    outline: none;
+    color: #e2474b;
+    padding: 1px 0;
+}
+
+.userInfoButton {
+    color: #2f3a56;
+    font-weight: bold;
+    padding: 1px 5px;
 }
 
 .chatControls{
@@ -49,7 +59,7 @@
 }
 
 .displayHeader {
-    background: cadetblue;
+    background: #406d96;
     color: white;
     font-weight: bold;
     height: auto;
@@ -60,15 +70,18 @@
 }
 
 .displayHeader.start {
-    background: tomato;
+    background: #e2474b;
 }
 
-.displayName{
+.displayName {
     display: flex;
     align-items: center;
     padding: 5px 10px;
     box-sizing: border-box;
     cursor: pointer;
+    background-color: #d8e8e8;
+    color: #2f3a56;
+    font-weight: bold;
 }
 
 .displayName.active{
@@ -116,6 +129,8 @@
 
 .userInfoSections div {
     margin-bottom: 20px;
+    color: #2f3a56;
+    font-weight: bolder;
 }
 
 .userInfoPic img {
@@ -143,4 +158,22 @@
 .onlineStatus.off{
     background: green;
     box-shadow: 0 0 0 0;
+}
+
+.userInfoTouch {
+    margin-top: 30px;
+    color: #2f3a56;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-color: #2f3a56;
+    border-radius: 5px;
+    background-color: #d8e8e8;
+}
+
+.errorMessage { 
+    font-weight: bolder;
+    color: #e2474b;
+    margin-top: 200px;
+    letter-spacing: 1px;
 }

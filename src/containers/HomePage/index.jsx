@@ -26,7 +26,7 @@ const User = (props) => {
     );
 };
 
-const HomePage = (props) => {
+const HomePage = () => {
 
     const dispatch = useDispatch();
     const auth = useSelector(state => state.auth);
@@ -67,7 +67,7 @@ const HomePage = (props) => {
         dispatch(getRealtimeConversations({ uid_1: auth.uid, uid_2: user.uid }));
     };
 
-    const submitMessage = (event) => {
+    const submitMessage = () => {
         const date = new Date();
         const str = date.getFullYear()
             + '/' + ('0' + (date.getMonth() + 1)).slice(-2)
@@ -97,14 +97,9 @@ const HomePage = (props) => {
         const isSameLastSubmitUser = user.LASTsubmitUserId === auth.uid;
         if (user.LASTdonut && inHour <= 1 && !isSameLastSubmitUser) {
             dispatch(successDonutMessage(auth.uid));
-            alert('早い返信をありがとう！');
+            alert('早い返信をありがとう！（DonutPointが加算されます）');
         }
         setDonut(false);
-    };
-
-    const toggleDonut = () => {
-        setDonut(!donut);
-        console.log(donut);
     };
 
     if (false) {
@@ -145,7 +140,7 @@ const HomePage = (props) => {
                                 >
                                     <p 
                                         className={ con.user_uid_1 === auth.uid ? 'myMessageStyle' : 'yourMessageStyle' }
-                                        style={{ backgroundColor: con.donut ? 'pink' : null }}
+                                        style={{ backgroundColor: con.donut ? '#e2474b' : null }}
                                     >{ con.message }</p>
                                     <p className='timestampData'>{ con.createdAt }</p>
                                 </div> )
@@ -160,11 +155,12 @@ const HomePage = (props) => {
                                 onChange={(event) => setMessage(event.target.value)}
                                 placeholder="Write Message"
                             />
-                            <button onClick={submitMessage}>Send</button>
+                            <button className="chatControlsButton" onClick={submitMessage}>SEND</button>
                             <button 
-                                onClick={toggleDonut}
-                                style={{ backgroundColor: donut ? 'pink' : '' }}
-                            >Donut</button>
+                                className="chatControlsButton"
+                                onClick={() => {setDonut(!donut)}}
+                                style={{ backgroundColor: donut ? '#e2474b' : '' }}
+                            >DONUT</button>
                         </div> : null
                     }
                 </div>

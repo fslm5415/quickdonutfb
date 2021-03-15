@@ -14,7 +14,7 @@ const Header = () => {
         <header className='header'>
             <div style={{ display: 'flex' }}>
                 <div className='logo'>
-                    <Link replace to={'/'} style={{ color: "white" }}>QuickDonut</Link>
+                    <Link replace to={'/'} style={{ color: "#d8e8e8" }}>QuickDonut</Link>
                 </div>
                 {
                     !auth.authenticated ?
@@ -25,7 +25,7 @@ const Header = () => {
 
                 }
             </div>
-            <div style={{ margin: '20px 0', color: '#fff', fontWeight: 'bold' }}>
+            <div style={{ margin: '20px 0', color: '#d8e8e8', fontWeight: 'bold' }}>
                 { auth.authenticated ? `Hi!   ${auth.firstName} ${auth.lastName}  ` + 
                     ( user.MyDonutPoit === null ? '' : `DP : ${user.MyDonutPoit}` )
                 : '' }
