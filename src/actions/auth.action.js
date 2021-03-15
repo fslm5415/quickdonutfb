@@ -13,12 +13,10 @@ export const signup = (user) => {
                 .createUserWithEmailAndPassword(user.email, user.password);
             const currentUer = firebase.auth().currentUser;
             const userFullName = `${user.firstName} ${user.lastName}`;
-
             const date = new Date();
             const strDate = date.getFullYear()
                 + '/' + ('0' + (date.getMonth() + 1)).slice(-2)
                 + '/' + ('0' + date.getDate()).slice(-2);
-            console.log('strDate? : ', strDate);
 
             await currentUer.updateProfile({
                 displayName: userFullName
@@ -40,8 +38,7 @@ export const signup = (user) => {
                 email    : user.email
             };
             localStorage.setItem('user', JSON.stringify(loggedInUser));
-            // ここをアラートにしてみてもいいかも
-            console.log('User logged in successfully...!');
+            alert('User logged in successfully...!');
             dispatch({
                 type   : authConstansts.USER_LOGIM_SUCCESS,
                 payload: { user: loggedInUser } 

@@ -4,8 +4,8 @@ import relationReducer     from "./relation.reducer";
 import userReducer         from "./user.reducer";
 
 const rootReducer = combineReducers({
-    auth: authReducer,
-    user: userReducer,
+    auth    : authReducer,
+    user    : userReducer,
     relation: relationReducer
 });
 

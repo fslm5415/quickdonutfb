@@ -17,14 +17,12 @@ const RegisterPage = (props) => {
 
     const registerUser = (event) => {
         event.preventDefault();
-
         const user = {
             firstName,
             lastName,
             email,
             password
         };
-
         dispatch(signup(user));
     };
 

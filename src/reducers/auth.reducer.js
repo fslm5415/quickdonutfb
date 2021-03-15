@@ -21,16 +21,16 @@ const authReducer = (state = initialState, action) => {
             state = {
                 ...state,
                 ...action.payload.user,
-                authenticated: true,
+                authenticated : true,
                 authenticating: false
             }
             break;
         case authConstansts.USER_LOGIM_FAILURE:
             state = {
                 ...state,
-                authenticated: false,
+                authenticated : false,
                 authenticating: false,
-                error: action.payload.error,
+                error         : action.payload.error,
             }
             break;
         case authConstansts.USER_LOGOUT_REQUEST:
@@ -49,7 +49,6 @@ const authReducer = (state = initialState, action) => {
         default:
             return state;
     }
-    // ？このreturnを消したらエラーになる（他のコンポーネント等にauthが返ってこない模様）
     return state;
 };
 

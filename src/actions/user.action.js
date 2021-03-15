@@ -2,8 +2,6 @@ import firebase          from "firebase/app";
 import                        'firebase/firestore';
 import { userConstants } from "./constants";
 
-// これはおそらく自分以外のユーザー全表示のアクション
-// なのでフレンドのみ表示をここで実装する
 export const getRealtimeUsers = (uid) => {
     return async (dispatch) => {
         dispatch({ type: userConstants.GET_REALTIME_USERS_REQUEST });
@@ -126,13 +124,6 @@ export const getRealtimeConversations = (user) => {
                             LASTdonut = doc.data().donut;
                             LASTsubmitUserId = doc.data().user_uid_1;
                         }
-                        // console.log('message? : ', doc.data().message);
-                        // console.log('donut? : ', doc.data().donut);
-                        // console.log('timestampData? : ', doc.data().timestampData);
-                        // console.log('LASTtimestampData? : ', LASTtimestampData);
-                        // console.log('LASTdonut? : ', LASTdonut);
-                        // console.log('LASTsubmitUserId? : ', LASTsubmitUserId);
-                        // console.log('===============================');
                     }
                     if(conversations.length > 0) {
                         dispatch({

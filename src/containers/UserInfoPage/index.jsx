@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector }   from 'react-redux';
-import Layout from "../../components/Layout/index";
+import Layout                         from "../../components/Layout/index";
 import { 
     getUserInfomation,
     sendRelationshipRequest,
     acceptRelationshipReqest,
     getRequestingUsers
-} from "../../actions/relation.action";
-import "./style.css";
+}                                     from "../../actions/relation.action";
+import                                     "./style.css";
 
 const SendingRequestUser = (props) => {
 
@@ -135,7 +135,11 @@ const UserInfoPage = (props) => {
         <Layout>
             <section className="container">
                 <div className="listOfUsers">
-                    <div onClick={() => setUserID(auth.uid)} className="displayName" style={{ backgroundColor: 'purple', color: 'white' }} >
+                    <div 
+                        onClick={() => setUserID(auth.uid)} 
+                        className="displayName" 
+                        style={{ backgroundColor: 'purple', color: 'white' }} 
+                    >
                         <div className="displayPic">
                             <img src="http://flat-icon-design.com/f/f_object_174/s512_f_object_174_1bg.png" alt="" />
                         </div>
@@ -202,7 +206,11 @@ const UserInfoPage = (props) => {
                                 <div className="userInfoDonuts">DP : { relation.donutPoint }</div>
                                 <div className="userInfoCreatedAt">アカウント作成日 : { relation.createdAt }</div>
                                 <div className="userInfoTouch">
-                                    <SwitchSection relation={ relation } sendRelationshipReq={ sendRelationshipReq } acceptRelationshipReq={ acceptRelationshipReq }  />
+                                    <SwitchSection 
+                                        relation={ relation } 
+                                        sendRelationshipReq={ sendRelationshipReq } 
+                                        acceptRelationshipReq={ acceptRelationshipReq }  
+                                    />
                                 </div>
                             </div> : null 
                         }

@@ -1,5 +1,5 @@
-import firebase          from "firebase/app";
-import                        'firebase/firestore';
+import firebase              from "firebase/app";
+import                            'firebase/firestore';
 import { relationConstants } from "./constants";
 
 export const getUserInfomation = ({uid_1, uid_2}) => {
@@ -28,7 +28,6 @@ export const getUserInfomation = ({uid_1, uid_2}) => {
                         payload: { user: getUserInfo } 
                     });
                 });
-            // ↓
             await db.collection('relationships')
                 .where('sendingUser', '==', uid_1)
                 .where('sendedUser', '==', uid_2)
@@ -41,9 +40,7 @@ export const getUserInfomation = ({uid_1, uid_2}) => {
                             isAccepted = true;
                         }
                     });
-                    // nullなら存在しない
-                    // falseなら相手の承認待ち
-                    // trueならすでに友達！
+                    // isAccepted === nullなら存在しない / falseなら相手の承認待ち / trueならすでに友達！
                     dispatch({
                         type   : relationConstants.GET_USERINFO_SUCCESS,
                         payload: { user: {isAccepted} } 
@@ -61,18 +58,13 @@ export const getUserInfomation = ({uid_1, uid_2}) => {
                             isGetStartRelation = true;
                         }
                     });
-                    // nullなら存在しない
-                    // falseならこっちの承認次第で友達に
-                    // trueならすでに友達！
+                    // isGetStartRelation === nullなら存在しない / falseならこっちの承認次第で友達に / trueならすでに友達！
                     dispatch({
                         type   : relationConstants.GET_USERINFO_SUCCESS,
                         payload: { user: {isGetStartRelation} } 
                     });
                 })
-            // ↑
-            
         } catch (error) {
-            console.log('ユーザーがいない！');
             const errorMessage = '該当するユーザーが存在しません！';
             dispatch({
                 type   : relationConstants.GET_USERINFO_FAILURE,
@@ -113,9 +105,6 @@ export const acceptRelationshipReqest = ({uid_1, uid_2}) => {
         const db = firebase.firestore();
         try {
             let targetId = '';
-            console.log('uid_1? : ',uid_1);
-            console.log('uid_2? : ',uid_2);
-            console.log('targetId before? : ', targetId);
             await db
                 .collection('relationships')
                 .where('sendedUser', '==', uid_1)
@@ -124,10 +113,8 @@ export const acceptRelationshipReqest = ({uid_1, uid_2}) => {
                 .then((querySnapshot) => {
                     querySnapshot.forEach((doc) => {
                         targetId = doc.id;
-                        console.log('doc.id? : ', doc.id);
                     });
                 });
-            console.log('targetId after? : ', targetId);
             await db
                 .collection('relationships')
                 .doc(targetId)
@@ -194,7 +181,7 @@ export const getRequestingUsers = (uid) => {
                                     payload: { targetUsers2 }
                                 });
                             });
-                    })
+                    });
                 });
             return unsubscribe;
         } catch (error) {

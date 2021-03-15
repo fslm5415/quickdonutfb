@@ -4,7 +4,7 @@ import { NavLink, Link }            from "react-router-dom";
 import { logout }                   from "../../actions/index";
 import                                   './style.css';
 
-const Header = (props) => {
+const Header = () => {
 
     const auth = useSelector(state => state.auth);
     const user = useSelector(state => state.user);
@@ -27,14 +27,14 @@ const Header = (props) => {
             </div>
             <div style={{ margin: '20px 0', color: '#fff', fontWeight: 'bold' }}>
                 { auth.authenticated ? `Hi!   ${auth.firstName} ${auth.lastName}  ` + 
-                    ( user.MyDonutPoit === null ? 'LetsTalk!' : `DP : ${user.MyDonutPoit}` )
+                    ( user.MyDonutPoit === null ? '' : `DP : ${user.MyDonutPoit}` )
                 : '' }
             </div>
                 {
                     auth.authenticated ? 
                     <ul className="menu">
                         <li style={{ marginRight: 20 }}>
-                            <Link replace to={'/userInfo'} >Relationship </Link>
+                            <Link replace to={'/userInfo'} >relationship </Link>
                         </li>
                         <li>
                             <Link replace to={'#'} onClick={ () => {

@@ -18,14 +18,14 @@ const relationReducer = (state = initialState, action) => {
         case relationConstants.GET_USERINFO_REQUEST:
             state = {
                 ...state,
-                error         : null
+                error: null
             }
             break;
         case relationConstants.GET_USERINFO_SUCCESS:
             state = {
                 ...state,
                 ...action.payload.user,
-                error         : null
+                error: null
             }
             break;
         case relationConstants.GET_USERINFO_FAILURE:
@@ -46,21 +46,21 @@ const relationReducer = (state = initialState, action) => {
         case relationConstants.SEND_REQUEST_SUCCESS:
             state = {
                 ...state,
-                firstName     : '',
-                lastName      : '',
-                donutPoint    : null,
-                createdAt     : null,
-                error         : null
+                firstName : '',
+                lastName  : '',
+                donutPoint: null,
+                createdAt : null,
+                error     : null
             }
             break;
         case relationConstants.SEND_REQUEST_FAILURE:
             state = {
                 ...state,
-                firstName     : '',
-                lastName      : '',
-                donutPoint    : null,
-                createdAt     : null,
-                error         : action.error
+                firstName : '',
+                lastName  : '',
+                donutPoint: null,
+                createdAt : null,
+                error     : action.error
             }
             break;
         case relationConstants.ACCEPT_REQUEST_REQUEST:
@@ -68,21 +68,21 @@ const relationReducer = (state = initialState, action) => {
         case relationConstants.ACCEPT_REQUEST_SUCCESS:
             state = {
                 ...state,
-                firstName     : '',
-                lastName      : '',
-                donutPoint    : null,
-                createdAt     : null,
-                error         : null
+                firstName : '',
+                lastName  : '',
+                donutPoint: null,
+                createdAt : null,
+                error     : null
             }
             break;
         case relationConstants.ACCEPT_REQUEST_FAILURE:
             state = {
                 ...state,
-                firstName     : '',
-                lastName      : '',
-                donutPoint    : null,
-                createdAt     : null,
-                error         : action.error
+                firstName : '',
+                lastName  : '',
+                donutPoint: null,
+                createdAt : null,
+                error     : action.error
             }
             break;
         case relationConstants.GET_REQ_REQUEST:
@@ -103,7 +103,7 @@ const relationReducer = (state = initialState, action) => {
             state = {
                 ...state,
                 SendingUsers: [],
-                SendedUsers: []
+                SendedUsers : []
             }
             break;
         default:

@@ -6,7 +6,7 @@ import Layout                       from "../../components/Layout/index";
 import Card                         from "../../components/UI/Card/index";
 import                                   './style.css';
 
-const LoginPage = (props) => {
+const LoginPage = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

@@ -34,7 +34,6 @@ const HomePage = (props) => {
     const [chatStarted, setChatStarted] = useState(false);
     const [chatUser, setChatUser] = useState('');
     const [message, setMessage] = useState('');
-    // これは相手のuidかも？！
     const [userUid, setUserUid] = useState(null);
     const [unsubscribe, setUnsubscribe] = useState(null);
     const [donut, setDonut] = useState(false);
