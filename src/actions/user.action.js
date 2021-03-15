@@ -8,21 +8,38 @@ export const getRealtimeUsers = (uid) => {
     return async (dispatch) => {
         dispatch({ type: userConstants.GET_REALTIME_USERS_REQUEST });
         const db = firebase.firestore();
-
-        const unsubscribe = await db.collection("users")
-            .onSnapshot((querySnapshot) => {
-                const users = [];
-                querySnapshot.forEach((doc) => {
-                    if(doc.data().uid !== uid) {
-                        users.push(doc.data());
-                    }
+        try {
+            const unsubscribe = await db.collection("relationships")
+                .onSnapshot((querySnapshot) => {
+                    const frendUsersID = [];
+                    querySnapshot.forEach((doc) => {
+                        if(doc.data().sendedUser === uid && doc.data().isAccepted) {
+                            frendUsersID.push(doc.data().sendingUser);
+                        }
+                        if(doc.data().sendingUser === uid && doc.data().isAccepted) {
+                            frendUsersID.push(doc.data().sendedUser);
+                        }
+                    });
+                    const users = [];
+                    frendUsersID.forEach((uid) => {
+                        db.collection("users")
+                            .where('uid', '==', uid)
+                            .get()
+                            .then((querySnapshot) => {
+                                querySnapshot.forEach((doc) => {
+                                    users.push(doc.data());
+                                });
+                                dispatch({ 
+                                    type   : userConstants.GET_REALTIME_USERS_SUCCESS,
+                                    payload: { users }
+                                });
+                            });
+                    });
                 });
-                dispatch({ 
-                    type   : userConstants.GET_REALTIME_USERS_SUCCESS,
-                    payload: { users }
-                });
-            });
-        return unsubscribe;
+            return unsubscribe;
+        } catch (error) {
+            console.log(error);
+        }
     };
 };
 

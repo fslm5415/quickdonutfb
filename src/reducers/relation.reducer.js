@@ -63,6 +63,28 @@ const relationReducer = (state = initialState, action) => {
                 error         : action.error
             }
             break;
+        case relationConstants.ACCEPT_REQUEST_REQUEST:
+            break;
+        case relationConstants.ACCEPT_REQUEST_SUCCESS:
+            state = {
+                ...state,
+                firstName     : '',
+                lastName      : '',
+                donutPoint    : null,
+                createdAt     : null,
+                error         : null
+            }
+            break;
+        case relationConstants.ACCEPT_REQUEST_FAILURE:
+            state = {
+                ...state,
+                firstName     : '',
+                lastName      : '',
+                donutPoint    : null,
+                createdAt     : null,
+                error         : action.error
+            }
+            break;
         case relationConstants.GET_REQ_REQUEST:
             break;
         case relationConstants.GET_REQ_ING_SUCCESS:

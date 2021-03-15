@@ -92,7 +92,7 @@ export const sendRelationshipRequest = ({uid_1, uid_2}) => {
                 .add({
                     sendingUser: uid_1,
                     sendedUser: uid_2,
-                    isAccepted: false
+                    isAccepted: false,
                 });
             dispatch({
                 type: relationConstants.SEND_REQUEST_SUCCESS
@@ -101,6 +101,47 @@ export const sendRelationshipRequest = ({uid_1, uid_2}) => {
             const errorMessage = '友達申請に失敗しました…';
             dispatch({
                 type: relationConstants.SEND_REQUEST_FAILURE,
+                error : errorMessage
+            });
+        }
+    };
+};
+
+export const acceptRelationshipReqest = ({uid_1, uid_2}) => {
+    return async (dispatch) => {
+        dispatch({ type: relationConstants.ACCEPT_REQUEST_REQUEST });
+        const db = firebase.firestore();
+        try {
+            let targetId = '';
+            console.log('uid_1? : ',uid_1);
+            console.log('uid_2? : ',uid_2);
+            console.log('targetId before? : ', targetId);
+            await db
+                .collection('relationships')
+                .where('sendedUser', '==', uid_1)
+                .where('sendingUser', '==', uid_2)
+                .get()
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                        targetId = doc.id;
+                        console.log('doc.id? : ', doc.id);
+                    });
+                });
+            console.log('targetId after? : ', targetId);
+            await db
+                .collection('relationships')
+                .doc(targetId)
+                .update({
+                    isAccepted: true
+                });
+            dispatch({
+                type: relationConstants.ACCEPT_REQUEST_SUCCESS
+            });
+            alert('リクエスト承認に成功しました！');
+        } catch (error) {
+            const errorMessage = 'リクエスト承認に失敗しました…';
+            dispatch({
+                type: relationConstants.ACCEPT_REQUEST_FAILURE,
                 error : errorMessage
             });
         }

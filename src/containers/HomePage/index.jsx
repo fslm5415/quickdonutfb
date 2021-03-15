@@ -131,8 +131,7 @@ const HomePage = (props) => {
                     }                       
                 </div>
                 <div className="chatArea">
-                    <div className="chatHeader" onClick={() => {
-                    }}>
+                    <div className="chatHeader">
                         {
                             chatStarted ? `${chatUser} DP : ${user.YourDonutPoit}` : ''
                         }

@@ -4,6 +4,7 @@ import Layout from "../../components/Layout/index";
 import { 
     getUserInfomation,
     sendRelationshipRequest,
+    acceptRelationshipReqest,
     getRequestingUsers
 } from "../../actions/relation.action";
 import "./style.css";
@@ -42,7 +43,7 @@ const SendedRequestUser = (props) => {
 
 const SwitchSection = (props) => {
 
-    const { relation, sendRelationshipReq } = props;
+    const { relation, sendRelationshipReq, acceptRelationshipReq } = props;
 
     if (relation.isMyself === true) {
         return (
@@ -60,9 +61,7 @@ const SwitchSection = (props) => {
         );
     } else if (relation.isAccepted === null && relation.isGetStartRelation === false) {
         return (
-            <button onClick={() => {
-                console.log('リクエストを承認！！');
-            }}>リクエストを承認する！</button>
+            <button onClick={() => acceptRelationshipReq()}>リクエストを承認する！</button>
         );
     } else if (relation.isAccepted === true || relation.isGetStartRelation === true) {
         return (
@@ -120,6 +119,13 @@ const UserInfoPage = (props) => {
         setUserID('');
     };
 
+    const acceptRelationshipReq = () => {
+        const uid_1 = auth.uid;
+        const uid_2 = userID;
+        dispatch(acceptRelationshipReqest({uid_1, uid_2}));
+        setUserID('');
+    };
+
     if (false) {
         // コード内の使用のため
         console.log(unsubscribe);
@@ -129,6 +135,14 @@ const UserInfoPage = (props) => {
         <Layout>
             <section className="container">
                 <div className="listOfUsers">
+                    <div onClick={() => setUserID(auth.uid)} className="displayName" style={{ backgroundColor: 'purple', color: 'white' }} >
+                        <div className="displayPic">
+                            <img src="http://flat-icon-design.com/f/f_object_174/s512_f_object_174_1bg.png" alt="" />
+                        </div>
+                        <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between', margin: '0 10px'}}>
+                            <span style={{fontWeight: 500}}>My Account</span>
+                        </div>
+                    </div>
                     {
                         relation.SendingUsers.length > 0 ?
                         <div className="displayHeader">Sending relationship request...</div> : null
@@ -188,7 +202,7 @@ const UserInfoPage = (props) => {
                                 <div className="userInfoDonuts">DP : { relation.donutPoint }</div>
                                 <div className="userInfoCreatedAt">アカウント作成日 : { relation.createdAt }</div>
                                 <div className="userInfoTouch">
-                                    <SwitchSection relation={ relation } sendRelationshipReq={ sendRelationshipReq }  />
+                                    <SwitchSection relation={ relation } sendRelationshipReq={ sendRelationshipReq } acceptRelationshipReq={ acceptRelationshipReq }  />
                                 </div>
                             </div> : null 
                         }
