@@ -7,6 +7,7 @@ import {
     acceptRelationshipReqest,
     getRequestingUsers
 }                                     from "../../actions/relation.action";
+import IconImage                      from "../../images/f_f_health_50_s512_f_health_50_2bg.png";
 import                                     "./style.css";
 
 const SendingRequestUser = (props) => {
@@ -16,7 +17,7 @@ const SendingRequestUser = (props) => {
     return (
         <div onClick={() => onClick(user.uid)} className="displayName" >
             <div className="displayPic">
-                <img src="http://flat-icon-design.com/f/f_object_174/s512_f_object_174_1bg.png" alt="" />
+                <img src={ IconImage } alt="" />
             </div>
             <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between', margin: '0 10px'}}>
                 <span style={{fontWeight: 500}}>{user.firstName} {user.lastName}</span>
@@ -32,7 +33,7 @@ const SendedRequestUser = (props) => {
     return (
         <div onClick={() => onClick(user.uid)} className="displayName" >
             <div className="displayPic">
-                <img src="http://flat-icon-design.com/f/f_object_174/s512_f_object_174_1bg.png" alt="" />
+                <img src={ IconImage } alt="" />
             </div>
             <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between', margin: '0 10px'}}>
                 <span style={{fontWeight: 500}}>{user.firstName} {user.lastName}</span>
@@ -140,7 +141,7 @@ const UserInfoPage = (props) => {
                         className="displayName My"  
                     >
                         <div className="displayPic">
-                            <img src="http://flat-icon-design.com/f/f_object_174/s512_f_object_174_1bg.png" alt="" />
+                            <img src={ IconImage } alt="" />
                         </div>
                         <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between', margin: '0 10px'}}>
                             <span style={{fontWeight: 500}}>My Account</span>
@@ -199,7 +200,7 @@ const UserInfoPage = (props) => {
                             relation.firstName !== '' ?
                             <div className="userInfoSections">
                                 <div className="userInfoPic">
-                                    <img src="http://flat-icon-design.com/f/f_object_174/s512_f_object_174_1bg.png" alt="" />
+                                    <img src={ IconImage } alt="" />
                                 </div>
                                 <div className="userInfoName">{ `${relation.firstName} ${relation.lastName}` }</div>
                                 <div className="userInfoDonuts">DonutPoint : { relation.donutPoint }</div>

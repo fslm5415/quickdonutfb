@@ -7,6 +7,7 @@ import {
     successDonutMessage
 }                                     from '../../actions/user.action';
 import Layout                         from "../../components/Layout/index";
+import IconImage                      from "../../images/f_f_health_50_s512_f_health_50_2bg.png";
 import                                     './style.css';
 
 const User = (props) => {
@@ -16,7 +17,7 @@ const User = (props) => {
     return (
         <div onClick={() => onClick(user)} className="displayName" >
             <div className="displayPic">
-                <img src="http://flat-icon-design.com/f/f_object_174/s512_f_object_174_1bg.png" alt="" />
+                <img src={ IconImage } alt="" />
             </div>
             <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between', margin: '0 10px'}}>
                 <span style={{fontWeight: 500}}>{user.firstName} {user.lastName}</span>

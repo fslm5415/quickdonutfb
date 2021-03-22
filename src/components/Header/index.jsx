@@ -34,6 +34,9 @@ const Header = () => {
                     auth.authenticated ? 
                     <ul className="menu">
                         <li style={{ marginRight: 20 }}>
+                            <Link replace to={'/'} >comunication </Link>
+                        </li>
+                        <li style={{ marginRight: 20 }}>
                             <Link replace to={'/userInfo'} >relationship </Link>
                         </li>
                         <li>

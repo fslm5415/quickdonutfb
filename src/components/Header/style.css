@@ -24,9 +24,12 @@
 
 .menu > li > a{
     color: #d8e8e8;
-    font-weight: bold;
     text-shadow: 0 0;
     text-decoration: none;
+}
+
+.menu > li > a.active {
+    font-weight: bold;
 }
 
 .leftMenu{
