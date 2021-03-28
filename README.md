@@ -3,7 +3,7 @@
 ## QuickDonut
 
 『業務連絡のレスが早い人ほどポイントが貯まる（仕事のできる信頼が可視化される）チャットアプリ』
-サイトURL[quickdonutfb.firebaseapp.com]
+[サイトURL](quickdonutfb.firebaseapp.com)
 
 # 特徴
 
@@ -32,7 +32,7 @@
 
 # 開発背景・開発過程
 
-別記事[https://qiita.com/Yopipo415/items/41fd9435cdd6cb7ad294]でまとめています。
+[別記事](https://qiita.com/Yopipo415/items/41fd9435cdd6cb7ad294)でまとめています。
 
 # 今後実装・改善したいこと
 
