@@ -4,7 +4,7 @@
 
 『業務連絡のレスが早い人ほどポイントが貯まる（仕事のできる信頼が可視化される）チャットアプリ』
 <br/>
-【[サイトURL](quickdonutfb.firebaseapp.com)】
+【[サイトURL](https://quickdonutfb.firebaseapp.com)】
 
 # 特徴
 
