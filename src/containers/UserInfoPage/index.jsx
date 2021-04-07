@@ -42,6 +42,21 @@ const SendedRequestUser = (props) => {
     );
 };
 
+const ConectedUser = (props) => {
+    const { user, onClick } = props;
+
+    return (
+        <div onClick={() => onClick(user.uid)} className="displayName" >
+            <div className="displayPic">
+                <img src={ IconImage } alt="" />
+            </div>
+            <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between', margin: '0 10px'}}>
+                <span style={{fontWeight: 500}}>{user.firstName} {user.lastName}</span>
+            </div>
+        </div>
+    );
+};
+
 const SwitchSection = (props) => {
 
     const { relation, sendRelationshipReq, acceptRelationshipReq } = props;
@@ -66,17 +81,18 @@ const SwitchSection = (props) => {
         );
     } else if (relation.isAccepted === true || relation.isGetStartRelation === true) {
         return (
-            <p>もうすでに友達です！</p>
+            <p>すでに相互承認済みです！</p>
         );
     } else {
         return null;
     }
-}
+};
 
 const UserInfoPage = (props) => {
 
     const dispatch = useDispatch();
     const auth = useSelector(state => state.auth);
+    const user = useSelector(state => state.user);
     const relation = useSelector(state => state.relation);
     const [userID, setUserID] = useState('');
     const [unsubscribe, setUnsubscribe] = useState(null);
@@ -144,12 +160,12 @@ const UserInfoPage = (props) => {
                             <img src={ IconImage } alt="" />
                         </div>
                         <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between', margin: '0 10px'}}>
-                            <span style={{fontWeight: 500}}>My Account</span>
+                            <span style={{fontWeight: 500}}>マイ アカウント</span>
                         </div>
                     </div>
                     {
                         relation.SendingUsers.length > 0 ?
-                        <div className="displayHeader">Sending relationship request...</div> : null
+                        <div className="displayHeader">相手の承認待ち...</div> : null
                     }
                     {
                         relation.SendingUsers.length > 0 ?
@@ -166,7 +182,7 @@ const UserInfoPage = (props) => {
 
                     {
                         relation.SendedUsers.length > 0 ?
-                        <div className="displayHeader start">Start a relationship?</div> : null
+                        <div className="displayHeader start">あなたの承認待ち...</div> : null
                     }
                     {
                         relation.SendedUsers.length > 0 ?
@@ -181,6 +197,23 @@ const UserInfoPage = (props) => {
                         }) : null
                     }     
 
+                    {
+                        user.users.length > 0 ?
+                        <div className="displayHeader done">相互承認済み</div> : null
+                    }
+                    {
+                        user.users.length > 0 ?
+                        user.users.map(user => {
+                            return (
+                                <ConectedUser 
+                                    onClick={ setUserID }       
+                                    key={ user.uid } 
+                                    user={ user } 
+                                />
+                            );
+                        }) : null
+                    }
+
                 </div>
                 <div className="userInfoArea">
                     <div className="userInfoHeader">
@@ -190,10 +223,10 @@ const UserInfoPage = (props) => {
                                 type="text"
                                 value={ userID }
                                 onChange={(event) => setUserID(event.target.value)}
-                                placeholder="UserID"
+                                placeholder=" ユーザーIDを入力"
                                 className="userIDinput"
                             />
-                            <button className="userInfoButton">Search</button>
+                            <button className="userInfoButton">検索</button>
                         </form>
                     </div>
                         { 

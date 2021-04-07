@@ -141,7 +141,7 @@ const HomePage = () => {
                                 >
                                     <p 
                                         className={ con.user_uid_1 === auth.uid ? 'myMessageStyle' : 'yourMessageStyle' }
-                                        style={{ backgroundColor: con.donut ? '#e2474b' : null }}
+                                        style={{ backgroundColor: con.donut ? '#e92efb' : null }}
                                     >{ con.message }</p>
                                     <p className='timestampData'>{ con.createdAt }</p>
                                 </div> )
@@ -154,14 +154,14 @@ const HomePage = () => {
                             <textarea 
                                 value={message}
                                 onChange={(event) => setMessage(event.target.value)}
-                                placeholder="Write Message"
+                                placeholder=" メッセージを入力"
                             />
-                            <button className="chatControlsButton" onClick={submitMessage}>SEND</button>
+                            <button className="chatControlsButton" onClick={submitMessage}>送信</button>
                             <button 
                                 className="chatControlsButton"
                                 onClick={() => {setDonut(!donut)}}
-                                style={{ backgroundColor: donut ? '#e2474b' : '' }}
-                            >DONUT</button>
+                                style={{ backgroundColor: donut ? '#e92efb' : '' }}
+                            >ドーナツ</button>
                         </div> : null
                     }
                 </div>

@@ -36,14 +36,14 @@ const LoginPage = () => {
             <div className="loginContainer">
                 <Card>
                     <form onSubmit={userLogin}>
-                        <h3 className="loginTitle">Login</h3>
+                        <h3 className="loginTitle">ログイン</h3>
                         <input
                             className="loginInput"
                             name="email"
                             type="text"
                             value={ email } 
                             onChange={(event) => setEmail(event.target.value)}
-                            placeholder="Email"
+                            placeholder=" Eメール"
                         />
                         <input
                             className="loginInput"
@@ -51,10 +51,10 @@ const LoginPage = () => {
                             type="password"
                             value={ password } 
                             onChange={(event) => setPassword(event.target.value)}
-                            placeholder="Password"
+                            placeholder=" パスワード"
                         />
                         <div>
-                            <button className="loginButton">Login</button>
+                            <button className="loginButton">ログイン</button>
                         </div>
                     </form>
                 </Card>

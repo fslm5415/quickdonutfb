@@ -35,14 +35,14 @@ const RegisterPage = (props) => {
             <div className="registerContainer">
                 <Card>
                     <form onSubmit={ registerUser }>
-                        <h3 className="registerTitle">Sign up</h3>
+                        <h3 className="registerTitle">新規登録</h3>
                         <input
                             className="registerInput"
                             name="firstName"
                             type="text"
                             value={ firstName } 
                             onChange={(event) => setFirstName(event.target.value)}
-                            placeholder="First Name"
+                            placeholder=" 姓"
                         />
                         <input
                             className="registerInput"
@@ -50,7 +50,7 @@ const RegisterPage = (props) => {
                             type="text"
                             value={ lastName } 
                             onChange={(event) => setLastName(event.target.value)}
-                            placeholder="Last Name"
+                            placeholder=" 名"
                         />
                         <input
                             className="registerInput"
@@ -58,7 +58,7 @@ const RegisterPage = (props) => {
                             type="text"
                             value={ email } 
                             onChange={(event) => setEmail(event.target.value)}
-                            placeholder="Email"
+                            placeholder=" Eメール"
                         />
                         <input
                             className="registerInput"
@@ -66,10 +66,10 @@ const RegisterPage = (props) => {
                             type="password"
                             value={ password } 
                             onChange={(event) => setPassword(event.target.value)}
-                            placeholder="Password"
+                            placeholder=" パスワード"
                         />
                         <div>
-                            <button className="registerButton">Sign up</button>
+                            <button className="registerButton">登録</button>
                         </div>
                     </form>
                 </Card>

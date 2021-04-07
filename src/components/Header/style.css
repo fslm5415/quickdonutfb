@@ -17,19 +17,23 @@
     text-shadow: 0 0;
 }
 
-.menu{
+.version{
+    font-size: 10px;
+    font-weight: normal;
+}
+
+.rightMenu{
     display: flex;
+    color: #d8e8e8;
     margin: 20px;
 }
 
-.menu > li > a{
-    color: #d8e8e8;
-    text-shadow: 0 0;
-    text-decoration: none;
+.rightMenu > li{
+    margin-left: 20px;
 }
 
-.menu > li > a.active {
-    font-weight: bold;
+.rightMenu > li > a{
+    color: #d8e8e8;
 }
 
 .leftMenu{

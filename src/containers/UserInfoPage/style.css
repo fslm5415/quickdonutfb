@@ -73,6 +73,11 @@
     background: #e2474b;
 }
 
+.displayHeader.done {
+    color: #d8e8e8;
+    background: #2f3a56;
+}
+
 .displayName {
     display: flex;
     align-items: center;

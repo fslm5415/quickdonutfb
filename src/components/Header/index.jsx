@@ -1,6 +1,6 @@
 import React                        from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Link }            from "react-router-dom";
+import { NavLink }            from "react-router-dom";
 import { logout }                   from "../../actions/index";
 import                                   './style.css';
 
@@ -10,39 +10,44 @@ const Header = () => {
     const user = useSelector(state => state.user);
     const dispatch = useDispatch();
 
+    const disp = () => {
+        if (window.confirm('ログアウトしますか？')) {
+            dispatch(logout(auth.uid));
+        }
+    };
+
     return (
         <header className='header'>
             <div style={{ display: 'flex' }}>
                 <div className='logo'>
-                    <Link replace to={'/'} style={{ color: "#d8e8e8" }}>QuickDonut</Link>
+                    QuickDonut
+                    <span className='version'> ver.2</span>
                 </div>
                 {
                     !auth.authenticated ?
                     <ul className="leftMenu">
-                    <li><NavLink to={'/login'} replace>login</NavLink></li>
-                    <li><NavLink to={'/signup'} replace>signup</NavLink></li>
+                        <li><NavLink to={'/login'} replace>ログイン</NavLink></li>
+                        <li><NavLink to={'/signup'} replace>新規登録</NavLink></li>
                     </ul> : null 
 
                 }
             </div>
             <div style={{ margin: '20px 0', color: '#d8e8e8', fontWeight: 'bold' }}>
-                { auth.authenticated ? `Hi!   ${auth.firstName} ${auth.lastName}  ` + 
+                { auth.authenticated ? `${auth.firstName} ${auth.lastName}  ` + 
                     ( user.MyDonutPoit === null ? '' : `DP : ${user.MyDonutPoit}` )
                 : '' }
             </div>
                 {
                     auth.authenticated ? 
-                    <ul className="menu">
-                        <li style={{ marginRight: 20 }}>
-                            <Link replace to={'/'} >comunication </Link>
-                        </li>
-                        <li style={{ marginRight: 20 }}>
-                            <Link replace to={'/userInfo'} >relationship </Link>
+                    <ul className="rightMenu">
+                        <li>
+                            <NavLink replace to={'/'} >トーク</NavLink>
                         </li>
                         <li>
-                            <Link replace to={'#'} onClick={ () => {
-                                dispatch(logout(auth.uid))
-                            }}>logout</Link>
+                            <NavLink replace to={'/userInfo'} >アカウント管理</NavLink>
+                        </li>
+                        <li>
+                            <NavLink replace to={'/'} onClick={ disp }>ログアウト</NavLink>
                         </li>
                     </ul> : null 
                 }
