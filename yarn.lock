@@ -5952,6 +5952,11 @@ firebase@^8.3.0:
     "@firebase/storage" "0.4.4"
     "@firebase/util" "0.4.0"
 
+firestore-jest-mock@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/firestore-jest-mock/-/firestore-jest-mock-0.11.1.tgz#05a6f7e485d6a8562ee6be7cdcb453b6b68e0b8f"
+  integrity sha512-sr+EyLT/wy2e2pgkBMdcO4loAtSI94CyHGesEyum0WuTMzEB1wWoAFSTI9FkdkoCfKFpnH5g9+IEtFF15HVtng==
+
 flat-cache@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/flat-cache/-/flat-cache-3.0.4.tgz#61b0338302b2fe9f957dcc32fc2a87f1c3048b11"
