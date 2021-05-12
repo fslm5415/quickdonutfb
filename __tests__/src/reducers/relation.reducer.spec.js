@@ -321,9 +321,75 @@ describe('relationReducerのテスト', () => {
     });
 
     it('action.type === GET_REQ_ING_SUCCESSのとき', () => {
-        // まだ途中↓
+        const dummyUsersData = {
+            targetUsers1: []
+        };
+        for (let i = 0; i < 3; i++) {
+            const dummyUserData = {
+                firstName : 'dummyFirstName' + i,
+                lastName  : 'dummyLastName' + i,
+                donutPoint: 99999 + i,
+                createdAt : '9999/99/99',
+                uid       : 1234567890 + i,
+                isOnline  : false
+            };
+            dummyUsersData.targetUsers1.push(dummyUserData);
+        };
+
         const action = {
-            type: relationConstants.GET_REQ_ING_SUCCESS
+            type   : relationConstants.GET_REQ_ING_SUCCESS,
+            payload: dummyUsersData
+        };
+        const currentState = {
+            firstName         : '',
+            lastName          : '',
+            donutPoint        : null,
+            createdAt         : null,
+            isAccepted        : null,
+            isGetStartRelation: null,
+            isMyself          : null,
+            error             : null,
+            SendingUsers      : [],
+            SendedUsers       : []
+        };
+
+        const newState = relationReducer(currentState, action);
+
+        expect( newState ).toStrictEqual(
+            {
+                firstName         : '',
+                lastName          : '',
+                donutPoint        : null,
+                createdAt         : null,
+                isAccepted        : null,
+                isGetStartRelation: null,
+                isMyself          : null,
+                error             : null,
+                SendingUsers      : dummyUsersData.targetUsers1,
+                SendedUsers       : []
+            }
+        );
+    });
+
+    it('action.type === GET_REQ_TED_SUCCESSのとき', () => {
+        const dummyUsersData = {
+            targetUsers2: []
+        };
+        for (let i = 0; i < 3; i++) {
+            const dummyUserData = {
+                firstName : 'dummyFirstName' + i,
+                lastName  : 'dummyLastName' + i,
+                donutPoint: 99999 + i,
+                createdAt : '9999/99/99',
+                uid       : 1234567890 + i,
+                isOnline  : false
+            };
+            dummyUsersData.targetUsers2.push(dummyUserData);
+        };
+
+        const action = {
+            type   : relationConstants.GET_REQ_TED_SUCCESS,
+            payload: dummyUsersData
         };
         const currentState = {
             firstName         : '',
@@ -351,16 +417,63 @@ describe('relationReducerのテスト', () => {
                 isMyself          : null,
                 error             : null,
                 SendingUsers      : [],
-                SendedUsers       : []
+                SendedUsers       : dummyUsersData.targetUsers2
             }
         );
     });
 
-    xit('action.type === GET_REQ_TED_SUCCESSのとき', () => {
+    it('action.type === GET_REQ_FAILUREのとき', () => {
+        const dummyUsersData = {
+            targetUsers1: [],
+            targetUsers2: []
+        };
+        for (let i = 0; i < 6; i++) {
+            const dummyUserData = { 
+                firstName : 'dummyFirstName' + i,
+                lastName  : 'dummyLastName' + i,
+                donutPoint: 99999 + i,
+                createdAt : '9999/99/99',
+                uid       : 1234567890 + i,
+                isOnline  : false
+            };
+            if (i < 3) {
+                dummyUsersData.targetUsers1.push(dummyUserData);
+            } else {
+                dummyUsersData.targetUsers2.push(dummyUserData);
+            }
+        };
 
-    });
+        const action = {
+            type: relationConstants.GET_REQ_FAILURE
+        };
+        const currentState = {
+            firstName         : '',
+            lastName          : '',
+            donutPoint        : null,
+            createdAt         : null,
+            isAccepted        : null,
+            isGetStartRelation: null,
+            isMyself          : null,
+            error             : null,
+            SendingUsers      : dummyUsersData.targetUsers1,
+            SendedUsers       : dummyUsersData.targetUsers2
+        };
 
-    xit('action.type === GET_REQ_FAILUREのとき', () => {
+        const newState = relationReducer(currentState, action);
 
+        expect( newState ).toStrictEqual(
+            {
+                firstName         : '',
+                lastName          : '',
+                donutPoint        : null,
+                createdAt         : null,
+                isAccepted        : null,
+                isGetStartRelation: null,
+                isMyself          : null,
+                error             : null,
+                SendingUsers      : [],
+                SendedUsers       : []
+            }
+        );
     });
 });
