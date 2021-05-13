@@ -16,16 +16,25 @@ https://www.youtube.com/watch?v=VchykQ4K0nY
 * 相手の任意で送られてくる”即レスしてほしいメッセージ”に、1時間以内に返信することでポイントが加算されます。
 * コンタクトを承認し合わないとメッセージを送受信できませんが、相手ユーザーのポイントなどの情報は事前に誰でも検索できます。
 * リアルタイムでユーザーがオンラインかオフラインかが表示されるので、よりコミュニケーションが円滑になります。
+* テストコード実装済みのため、安全性が担保された機能を提供します。
 
 # 使用したライブラリ
 
-* firebase 8.3.0
-* react 17.0.1
-* react-dom 17.0.1
-* react-router-dom 5.2.0
-* redux 4.0.5
-* react-redux 7.2.2
-* redux-thunk 2.3.0
+* dependencies
+    * firebase 8.3.0
+    * react 17.0.1
+    * react-dom 17.0.1
+    * react-router-dom 5.2.0
+    * redux 4.0.5
+    * react-redux 7.2.2
+    * redux-thunk 2.3.0
+* devDependencies
+    * @babel/core 7.14.0
+    * @babel/node 7.13.13
+    * @babel/preset-env 7.14.1
+    * babel-jest 26.6.3
+    * jest 26.6.3
+    * redux-mock-store 1.5.4
 
 # 使い方
 
@@ -41,8 +50,8 @@ https://www.youtube.com/watch?v=VchykQ4K0nY
 
 # 今後実装・改善したいこと
 
-・さらにユーザーの即レスデータを正確にするため、週間での総オンライン時間、ポイント獲得数の表示
-・即レス時間はいいものの、その返信内容が適切だったかを判断するため、ポイント獲得時に相手から返信内容をGood/Bad/NothingSpecialで評価される（その総数もデータ表示）
+* さらにユーザーの即レスデータを正確にするため、週間での総オンライン時間、ポイント獲得数の表示
+* 即レス時間はいいものの、その返信内容が適切だったかを判断するため、ポイント獲得時に相手から返信内容をGood/Bad/NothingSpecialで評価される（その総数もデータ表示）
 
 # 制作者情報
 
