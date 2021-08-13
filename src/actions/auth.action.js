@@ -38,12 +38,13 @@ export const signup = (user) => {
                 email    : user.email
             };
             localStorage.setItem('user', JSON.stringify(loggedInUser));
-            alert('User logged in successfully...!');
+            alert('ログインに成功しました！');
             dispatch({
                 type   : authConstansts.USER_LOGIM_SUCCESS,
                 payload: { user: loggedInUser } 
             });
         } catch (error) {
+            alert("エラーメッセージ：" + error.message);
             dispatch({
                 type   : authConstansts.USER_LOGIM_FAILURE,
                 payload: { error } 
@@ -80,6 +81,7 @@ export const signin = (user) => {
                 payload: { user: loggedInUser } 
             });
         } catch (error) {
+            alert("エラーメッセージ：" + error.message);
             dispatch({
                 type   : authConstansts.USER_LOGIM_FAILURE,
                 payload: { error } 

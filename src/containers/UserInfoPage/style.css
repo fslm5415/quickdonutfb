@@ -34,7 +34,7 @@
     margin-right: 10px;
     border: 1px solid #2f3a56;
     outline: none;
-    color: #e2474b;
+    color: #e92efb;
     padding: 1px 0;
 }
 
@@ -70,7 +70,7 @@
 }
 
 .displayHeader.start {
-    background: #e2474b;
+    background: #e92efb;
 }
 
 .displayHeader.done {
@@ -178,7 +178,7 @@
 
 .errorMessage { 
     font-weight: bolder;
-    color: #e2474b;
+    color: #e92efb;
     margin-top: 200px;
     letter-spacing: 1px;
 }

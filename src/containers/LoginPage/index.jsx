@@ -17,11 +17,11 @@ const LoginPage = () => {
         event.preventDefault();
 
         if (email === "") {
-            alert("Email is required");
+            alert("Eメールアドレスを入力してください。");
             return;
         }
         if (password === "") {
-            alert("Password is required");
+            alert("パスワードを入力してください。");
             return;
         }
         dispatch(signin({ email, password }));
