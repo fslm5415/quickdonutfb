@@ -124,7 +124,6 @@ export const logout = (uid) => {
             localStorage.clear();
             dispatch({ type: authConstansts.USER_LOGOUT_SUCCESS });
         } catch (error) {
-            console.log(error);
             dispatch({ type: authConstansts.USER_LOGOUT_FAILURE, payload: { error } });
         }
     };
