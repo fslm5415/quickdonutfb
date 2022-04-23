@@ -1,5 +1,5 @@
-import configureMockStore from "redux-mock-store";
-import thunk from "redux-thunk";
+import configureMockStore    from "redux-mock-store";
+import thunk                 from "redux-thunk";
 import firebase              from "firebase/app";
 import                            'firebase/firestore';
 import { 
@@ -7,7 +7,7 @@ import {
     sendRelationshipRequest,
     acceptRelationshipReqest,
     getRequestingUsers
-} from "../../../src/actions/relation.action";
+}                            from "../../../src/actions/relation.action";
 import { relationConstants } from "../../../src/actions/constants";
 
 const userMock = {
@@ -197,7 +197,7 @@ describe('relation.actionのテスト', () => {
                     type: relationConstants.SEND_REQUEST_REQUEST
                 },
                 {
-                    type   : relationConstants.SEND_REQUEST_SUCCESS,
+                    type: relationConstants.SEND_REQUEST_SUCCESS,
                 }
             ]);
         });
@@ -243,7 +243,7 @@ describe('relation.actionのテスト', () => {
                     type: relationConstants.ACCEPT_REQUEST_REQUEST
                 },
                 {
-                    type   : relationConstants.ACCEPT_REQUEST_SUCCESS,
+                    type: relationConstants.ACCEPT_REQUEST_SUCCESS,
                 }
             ]);
         });

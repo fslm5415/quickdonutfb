@@ -1,14 +1,14 @@
 import configureMockStore from "redux-mock-store";
-import thunk from "redux-thunk";
-import firebase          from "firebase/app";
+import thunk              from "redux-thunk";
+import firebase           from "firebase/app";
 import                        'firebase/firestore';
-import { userConstants } from "../../../src/actions/constants";
+import { userConstants }  from "../../../src/actions/constants";
 import { 
     getRealtimeUsers,
     updateMessage,
     successDonutMessage,
     getRealtimeConversations
-} from "../../../src/actions/user.action";
+}                         from "../../../src/actions/user.action";
 
 const userMock = [
     {
@@ -61,9 +61,9 @@ jest.mock('firebase/app', () => {
         firestore: jest.fn().mockReturnValue({
             collection: jest.fn().mockReturnValue({
                 doc: jest.fn().mockReturnValue({
-                    set: jest.fn(),
+                    set   : jest.fn(),
                     update: jest.fn(),
-                    get: jest.fn(() => Promise.resolve({
+                    get   : jest.fn(() => Promise.resolve({
                         data: () => userMock[0]
                     }))
                 }),

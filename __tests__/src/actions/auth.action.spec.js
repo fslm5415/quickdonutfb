@@ -1,5 +1,5 @@
 import configureMockStore from "redux-mock-store";
-import thunk from "redux-thunk";
+import thunk              from "redux-thunk";
 import firebase           from "firebase/app";
 import                         'firebase/firestore';
 import                         'firebase/auth';
@@ -8,7 +8,7 @@ import {
     signin,
     isLoggedInUser,
     logout
-} from "../../../src/actions/auth.action";
+}                         from "../../../src/actions/auth.action";
 import { authConstansts } from "../../../src/actions/constants";
 
 jest.spyOn(window, 'alert').mockImplementation(() => {});
@@ -17,19 +17,19 @@ jest.mock('firebase/app', () => {
     const userCredentialMock = {
         user: {
             sendEmailVerification: jest.fn(),
-            displayName: 'dummyFirstName dummyLastName',
-            createdAt  : '9999/99/99', 
-            donutPoint : 999,
-            email      : 'dummyEmail',
-            uid        : '12345abcde',
-            isOnline   : false
+            displayName          : 'dummyFirstName dummyLastName',
+            createdAt            : '9999/99/99', 
+            donutPoint           : 999,
+            email                : 'dummyEmail',
+            uid                  : '12345abcde',
+            isOnline             : false
         }
     }
     return {
         firestore: jest.fn().mockReturnValue({
             collection: jest.fn().mockReturnValue({
                 doc: jest.fn().mockReturnValue({
-                    set: jest.fn(),
+                    set   : jest.fn(),
                     update: jest.fn()
                 })
             })
@@ -162,7 +162,7 @@ describe('auth.actionのテスト', () => {
                     type: authConstansts.USER_LOGIM_REQUEST
                 },
                 {
-                    type: authConstansts.USER_LOGIM_FAILURE,
+                    type   : authConstansts.USER_LOGIM_FAILURE,
                     payload: { error: expedtedError }
                 }
             ])
@@ -203,7 +203,7 @@ describe('auth.actionのテスト', () => {
                     type: authConstansts.USER_LOGIM_REQUEST
                 },
                 {
-                    type: authConstansts.USER_LOGIM_FAILURE,
+                    type   : authConstansts.USER_LOGIM_FAILURE,
                     payload: { error: 'Login again please' }
                 }
             ])
@@ -245,7 +245,7 @@ describe('auth.actionのテスト', () => {
                     type: authConstansts.USER_LOGOUT_REQUEST
                 },
                 {
-                    type: authConstansts.USER_LOGOUT_FAILURE,
+                    type   : authConstansts.USER_LOGOUT_FAILURE,
                     payload: { error: expedtedError }
                 }
             ])
