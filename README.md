@@ -2,9 +2,9 @@
 
 ## QuickDonut
 
-『業務連絡のレスが早い人ほどポイントが貯まる（仕事のできる信頼が可視化される）チャットアプリ』
+https://quickdonutfb.firebaseapp.com
 <br/>
-【[サイトURL](https://quickdonutfb.firebaseapp.com)】
+『業務連絡のレスポンスが早い人ほどポイントが貯まる（仕事のできる信頼が可視化される）チャットアプリ』
 
 # デモ（YouTube動画）
 
@@ -55,6 +55,8 @@ https://www.youtube.com/watch?v=VchykQ4K0nY
 
 # 制作者情報
 
-* 深居昌哉
-* 転職活動中
-* fslm5415@gmail.com
+* スーババ
+* Blog
+    * https://subaba-design.com
+* Twitter
+    * https://twitter.com/subaba_design
