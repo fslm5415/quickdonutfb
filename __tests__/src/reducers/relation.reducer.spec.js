@@ -1,4 +1,4 @@
-import relationReducer from "../../../src/reducers/relation.reducer";
+import relationReducer       from "../../../src/reducers/relation.reducer";
 import { relationConstants } from "../../../src/actions/constants";
 
 describe('relationReducerのテスト', () => {
@@ -36,7 +36,7 @@ describe('relationReducerのテスト', () => {
             isGetStartRelation: false
         };
         const action = {
-            type: relationConstants.GET_USERINFO_SUCCESS,
+            type   : relationConstants.GET_USERINFO_SUCCESS,
             payload: { user: dummyUserData }
         };
         const currentState = {
@@ -73,7 +73,7 @@ describe('relationReducerのテスト', () => {
     it('action.type === GET_USERINFO_FAILUREのとき', () => {
         const dummyErrorMessage = 'ダミーエラーメッセージ';
         const action = {
-            type: relationConstants.GET_USERINFO_FAILURE,
+            type   : relationConstants.GET_USERINFO_FAILURE,
             payload: { errorMessage: dummyErrorMessage }
         };
         const currentState = {
@@ -168,7 +168,7 @@ describe('relationReducerのテスト', () => {
     it('action.type === SEND_REQUEST_FAILUREのとき', () => {
         const dummyErrorMessage = 'ダミーエラーメッセージ';
         const action = {
-            type: relationConstants.SEND_REQUEST_FAILURE,
+            type : relationConstants.SEND_REQUEST_FAILURE,
             error: dummyErrorMessage
         };
         const currentState = {
@@ -263,7 +263,7 @@ describe('relationReducerのテスト', () => {
     it('action.type === ACCEPT_REQUEST_FAILUREのとき', () => {
         const dummyErrorMessage = 'ダミーエラーメッセージ';
         const action = {
-            type: relationConstants.ACCEPT_REQUEST_FAILURE,
+            type : relationConstants.ACCEPT_REQUEST_FAILURE,
             error: dummyErrorMessage
         };
         const currentState = {

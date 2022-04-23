@@ -1,4 +1,4 @@
-import userReducer from "../../../src/reducers/user.reducer";
+import userReducer       from "../../../src/reducers/user.reducer";
 import { userConstants } from "../../../src/actions/constants";
 
 describe('userReducerのテスト', () => {
@@ -36,7 +36,7 @@ describe('userReducerのテスト', () => {
             dummyUsersData.push(dummyUserData);
         };
         const action = {
-            type: userConstants.GET_REALTIME_USERS_SUCCESS,
+            type   : userConstants.GET_REALTIME_USERS_SUCCESS,
             payload: { 
                 users : dummyUsersData
             }
@@ -88,7 +88,7 @@ describe('userReducerのテスト', () => {
             dummyData.conversations.push(dummyConversations);
         };
         const action = {
-            type: userConstants.GET_REALTIME_MESSAGES_SUCCESS,
+            type   : userConstants.GET_REALTIME_MESSAGES_SUCCESS,
             payload: dummyData
         };
         const currentState = {
@@ -138,7 +138,7 @@ describe('userReducerのテスト', () => {
             dummyData.conversations.push(dummyConversations);
         };
         const action = {
-            type: userConstants.GET_REALTIME_MESSAGES_FAILURE,
+            type   : userConstants.GET_REALTIME_MESSAGES_FAILURE,
             payload: { conversations: [] }
         };
         const currentState = {

@@ -1,4 +1,4 @@
-import authReducer from "../../../src/reducers/auth.reducer";
+import authReducer        from "../../../src/reducers/auth.reducer";
 import { authConstansts } from "../../../src/actions/constants";
 
 describe('authReducerのテスト', () => {
@@ -29,7 +29,7 @@ describe('authReducerのテスト', () => {
             email    : 'dummyEmail'
         };
         const action = {
-            type: authConstansts.USER_LOGIM_SUCCESS,
+            type   : authConstansts.USER_LOGIM_SUCCESS,
             payload: { user: dummyUserData }
         };
         const currentState = {
@@ -59,7 +59,7 @@ describe('authReducerのテスト', () => {
     it('action.type === USER_LOGIM_FAILUREのとき', () => {
         const dummyErrorMessage = 'ダミーエラーメッセージ';
         const action = {
-            type: authConstansts.USER_LOGIM_FAILURE,
+            type   : authConstansts.USER_LOGIM_FAILURE,
             payload: { error: dummyErrorMessage }
         };
         const currentState = {
@@ -126,7 +126,7 @@ describe('authReducerのテスト', () => {
     it('action.type === USER_LOGOUT_FAILUREのとき', () => {
         const dummyErrorMessage = 'ダミーエラーメッセージ';
         const action = {
-            type: authConstansts.USER_LOGIM_FAILURE,
+            type   : authConstansts.USER_LOGIM_FAILURE,
             payload: { error: dummyErrorMessage }
         };
         const currentState = {
