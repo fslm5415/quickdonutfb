@@ -1,6 +1,6 @@
 import React                        from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink }            from "react-router-dom";
+import { NavLink }                  from "react-router-dom";
 import { logout }                   from "../../actions/index";
 import                                   './style.css';
 
@@ -21,7 +21,7 @@ const Header = () => {
             <div style={{ display: 'flex' }}>
                 <div className='logo'>
                     QuickDonut
-                    <span className='version'> ver.3</span>
+                    <span className='version'> ver.4</span>
                 </div>
                 {
                     !auth.authenticated ?
@@ -40,10 +40,10 @@ const Header = () => {
                 {
                     auth.authenticated ? 
                     <ul className="rightMenu">
-                        <li>
+                        <li className="rightMenuTalk">
                             <NavLink replace to={'/'} >トーク</NavLink>
                         </li>
-                        <li>
+                        <li className="rightMenuAccountManagement">
                             <NavLink replace to={'/userInfo'} >アカウント管理</NavLink>
                         </li>
                         <li>

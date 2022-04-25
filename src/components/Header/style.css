@@ -36,6 +36,14 @@
     color: #d8e8e8;
 }
 
+.rightMenuTalk > a.active {
+    font-weight: bold;
+}
+
+.rightMenuAccountManagement > a.active {
+    font-weight: bold;
+}
+
 .leftMenu{
     display: flex; 
     color: #d8e8e8; 
