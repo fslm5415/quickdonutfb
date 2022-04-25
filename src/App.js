@@ -11,7 +11,7 @@ import PrivateRoute                 from "./components/PrivateRoute";
 import { isLoggedInUser }           from "./actions/index";
 import                                   './App.css';
 
-import UserInfoPage from "./containers/UserInfoPage/index";
+import UserInfoPage                 from "./containers/UserInfoPage/index";
 
 function App() {
 
