@@ -33,6 +33,14 @@ const RegisterPage = (props) => {
     return (
         <Layout>
             <div className="registerContainer">
+                <div className="attentionCard">
+                    <h3>ご利用上の注意</h3>
+                    <p>このアプリケーションは、素人が作ったおもちゃです。
+                        ご利用の際はダミーのメールアドレスで認証いただき、
+                        チャット上での機密情報のやり取り等はご遠慮ください。
+                        制作者は情報漏洩等全ての責任を負いかねます。
+                        以下のフォームから新規登録いただいた方は、この注意事項に同意したものとします。</p>
+                </div>
                 <Card>
                     <form onSubmit={ registerUser }>
                         <h3 className="registerTitle">新規登録</h3>

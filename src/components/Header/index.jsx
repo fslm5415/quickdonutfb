@@ -21,7 +21,7 @@ const Header = () => {
             <div style={{ display: 'flex' }}>
                 <div className='logo'>
                     QuickDonut
-                    <span className='version'> ver.5</span>
+                    <span className='version'> ver.6</span>
                 </div>
                 {
                     !auth.authenticated ?
