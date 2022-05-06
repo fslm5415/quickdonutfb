@@ -1,9 +1,10 @@
 # このアプリについて
 
 ## アプリ名
-【QuickDonut】
+<strong>QuickDonut</strong>
 <br/>
 https://quickdonutfb.firebaseapp.com
+<br/>
 <br/>
 業務連絡の返信が早い人ほどポイントが貯まる
 <br/>
