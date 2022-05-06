@@ -20,7 +20,6 @@ https://youtu.be/wIHEXcrCq4o
 * ユーザー情報、ポイント数の事前検索
 * ”即レスしてほしいメッセージ”の任意送信と、その返信によるポイント加算機能
 <br/>
-<br/>
 
 # 使用したライブラリ
 
@@ -39,7 +38,6 @@ https://youtu.be/wIHEXcrCq4o
     * babel-jest 26.6.3
     * jest 26.6.3
     * redux-mock-store 1.5.4
-<br/>
 <br/>
 
 # 制作期間
