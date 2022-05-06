@@ -1,6 +1,8 @@
-# アプリの名前
+# このアプリについて
 
-## QuickDonut
+## アプリ名
+【QuickDonut】
+<br/>
 https://quickdonutfb.firebaseapp.com
 <br/>
 業務連絡の返信が早い人ほどポイントが貯まる
@@ -9,19 +11,19 @@ https://quickdonutfb.firebaseapp.com
 <br/>
 <br/>
 
-# 使い方・紹介動画（YouTube）
+## 使い方・紹介動画（YouTube）
 https://youtu.be/wIHEXcrCq4o
 <br/>
 <br/>
 
-# このアプリでできること
+## このアプリでできること
 
 * 個人間でのリアルタイムチャット
 * ユーザー情報、ポイント数の事前検索
 * ”即レスしてほしいメッセージ”の任意送信と、その返信によるポイント加算機能
 <br/>
 
-# 使用したライブラリ
+## 使用したライブラリ
 
 * dependencies
     * firebase 8.3.0
@@ -40,12 +42,12 @@ https://youtu.be/wIHEXcrCq4o
     * redux-mock-store 1.5.4
 <br/>
 
-# 制作期間
+## 制作期間
 2週間（本格的な着工から最初のデプロイまでとした場合）
 <br/>
 <br/>
 
-# 制作意図・開発過程など
+## 制作意図・開発過程など
 ブログ記事の方でまとめています。
 <br/>
 https://subaba-design.com/portfolio_tensyoku_react_firebase
@@ -54,7 +56,7 @@ https://subaba-design.com/portfolio_tensyoku_react_firebase
 
 # 制作者情報
 
-* スーババ
+## スーババ
 * Blog
     * https://subaba-design.com
 * Twitter
